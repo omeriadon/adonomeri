@@ -120,6 +120,13 @@ export default function Navbar() {
                     Projects
                   </Link>
                   <Link
+                    href="/skills"
+                    className="block px-3 py-2 rounded-lg hover:bg-gray-800/50 hover:text-blue-400 transition-all duration-200"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Skills
+                  </Link>
+                  <Link
                     href="/contact"
                     className="block px-3 py-2 rounded-lg hover:bg-gray-800/50 hover:text-blue-400 transition-all duration-200"
                     onClick={() => setIsMenuOpen(false)}
