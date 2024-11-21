@@ -24,3 +24,46 @@ body {
   background: rgb(107, 114, 128);
 }
 
+.wiggle-animation {
+  animation: wiggle 3s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0% {
+    d: path("M10,0 Q15,25 5,50 Q-5,75 10,100");
+  }
+  50% {
+    d: path("M10,0 Q5,25 15,50 Q25,75 10,100");
+  }
+  100% {
+    d: path("M10,0 Q15,25 5,50 Q-5,75 10,100");
+  }
+}
+
+@keyframes border-flow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-border-flow {
+  animation: border-flow 5s linear infinite;
+}
+
+@keyframes gradient-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-gradient-rotate {
+  animation: gradient-rotate 5s linear infinite;
+  background-size: 200% 200%;
+}
+
