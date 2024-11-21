@@ -4,12 +4,12 @@ import { useEffect, useState, useRef } from 'react';
 
 const timelineData = [
   {
-    year: "2016-2020",
+    year: "2022-2027",
     title: "High School",
-    institution: "Example High School",
+    institution: "Perth Modern School",
     description: "Studied A-levels in Mathematics, Physics, and Computer Science.",
     achievements: [
-      "Head of Computer Science Club",
+      "Learn Swift and SwiftUI",
       "Developed first web application",
     ]
   },
