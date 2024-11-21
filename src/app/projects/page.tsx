@@ -1,0 +1,81 @@
+"use client";
+
+import React from 'react';
+
+const projectsData = [
+  {
+    title: "E-commerce Platform",
+    description: "A full-stack e-commerce solution built with Next.js and Stripe integration",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+    link: "https://github.com/example/project1"
+  },
+  {
+    title: "Task Management App",
+    description: "A collaborative task management tool with real-time updates",
+    technologies: ["React", "Firebase", "Material UI", "Redux"],
+    link: ""
+  },
+  {
+    title: "Weather Dashboard",
+    description: "Real-time weather tracking application with detailed forecasts",
+    technologies: ["React", "OpenWeather API", "Chart.js", "Tailwind CSS"],
+    link: "https://github.com/example/project3"
+  }
+];
+
+export default function Projects() {
+  return (
+    <div className="min-h-screen pt-32 px-4 max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-5xl font-bold text-center mb-8 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+          My Projects
+        </h1>
+        
+        <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+          Here are some of the projects I've worked on. Each project represents a unique challenge and learning experience.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {projectsData.map((project, index) => {
+            const CardContent = () => (
+              <>
+                <h3 className="text-2xl font-bold text-blue-400 mb-4">{project.title}</h3>
+                <p className="text-gray-300 mb-6">{project.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 text-sm bg-blue-500/10 text-blue-400 rounded-full"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </>
+            );
+
+            const cardClassName = "block bg-blue-500/10 backdrop-blur-sm rounded-xl p-8 border border-blue-400/20 " +
+                                "shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300 hover:scale-105 " +
+                                "hover:shadow-[0_0_25px_rgba(59,130,246,0.3)]";
+
+            return project.link ? (
+              <a
+                key={index}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cardClassName}
+              >
+                <CardContent />
+              </a>
+            ) : (
+              <div key={index} className={cardClassName}>
+                <CardContent />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+} 

@@ -26,13 +26,13 @@ export default function Contact() {
   ];
 
   return (
-    <div className="py-12 px-4 sm:px-6 lg:px-8 mt-16">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-8 animate-fade-in">
-          Let&apos;s Connect
+    <div className="min-h-screen pt-32 px-4 max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-5xl font-bold text-center mb-8 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+          Let's Connect
         </h1>
         
-        <p className="text-gray-400 text-center mb-12">
+        <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
           Choose your preferred way to get in touch. I typically respond within 24 hours.
         </p>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const timelineData = [
   {
@@ -24,18 +24,45 @@ const timelineData = [
       "Created multiple full-stack applications"
     ]
   },
-  // Add more timeline items as needed
 ];
 
 export default function History() {
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const [lineHeight, setLineHeight] = useState(0);
+
+  useEffect(() => {
+    const updateLineHeight = () => {
+      if (timelineRef.current) {
+        const timelineHeight = timelineRef.current.getBoundingClientRect().height;
+        setLineHeight(timelineHeight + 100); // Add some padding at the bottom
+      }
+    };
+
+    // Initial measurement
+    updateLineHeight();
+
+    // Update on window resize
+    window.addEventListener('resize', updateLineHeight);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', updateLineHeight);
+  }, []);
+
   return (
-    <main className="py-12 px-4 sm:px-6 lg:px-8 mt-16">
-      <div className="max-w-4xl mx-auto relative">
-        <h1 className="text-4xl font-bold text-center mb-32">
+    <div className="min-h-screen pt-32 px-4 max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto relative">
+        <h1 className="text-5xl font-bold text-center mb-8 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
           My Journey
         </h1>
         
-        <div className="absolute left-1/2 top-48 bottom-20 -translate-x-1/2">
+        <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+          Explore my educational background and professional development milestones.
+        </p>
+
+        <div 
+          className="absolute left-1/2 top-80 -translate-x-1/2" 
+          style={{ height: `${lineHeight}px` }}
+        >
           <svg
             className="h-full w-8 -translate-x-1/2"
             viewBox="0 0 10 100"
@@ -51,7 +78,7 @@ export default function History() {
           </svg>
         </div>
 
-        <div className="relative space-y-32">
+        <div ref={timelineRef} className="relative space-y-32">
           {timelineData.map((item, index) => (
             <div
               key={index}
@@ -79,6 +106,6 @@ export default function History() {
           ))}
         </div>
       </div>
-    </main>
+    </div>
   );
 } 
