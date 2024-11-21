@@ -4,23 +4,17 @@ import { useEffect, useState } from 'react';
 
 const projectsData = [
   {
-    title: "E-commerce Platform",
-    description: "A full-stack e-commerce solution built with Next.js and Stripe integration",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
-    link: "https://github.com/example/project1"
+    title: "Portfolio Website",
+    description: "This website is a portfolio of my projects and skills.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    link: "https://adonomeri.vercel.app"
   },
   {
-    title: "Task Management App",
+    title: "Add apple app here",
     description: "A collaborative task management tool with real-time updates",
     technologies: ["React", "Firebase", "Material UI", "Redux"],
     link: ""
   },
-  {
-    title: "Weather Dashboard",
-    description: "Real-time weather tracking application with detailed forecasts",
-    technologies: ["React", "OpenWeather API", "Chart.js", "Tailwind CSS"],
-    link: "https://github.com/example/project3"
-  }
 ];
 
 export default function Projects() {

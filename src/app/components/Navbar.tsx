@@ -54,6 +54,12 @@ export default function Navbar() {
                     Journey
                   </Link>
                   <Link 
+                    href="/skills" 
+                    className="px-3 py-2 rounded-lg hover:bg-gray-800/50 hover:text-blue-400 transition-all duration-200"
+                  >
+                    Skills
+                  </Link>
+                  <Link 
                     href="/projects" 
                     className="px-3 py-2 rounded-lg hover:bg-gray-800/50 hover:text-blue-400 transition-all duration-200"
                   >

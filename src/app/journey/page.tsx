@@ -7,23 +7,13 @@ const timelineData = [
     year: "2022-2027",
     title: "High School",
     institution: "Perth Modern School",
-    description: "Studied A-levels in Mathematics, Physics, and Computer Science.",
+    description: "Learnt all the basics of programming and computer science.",
     achievements: [
-      "Learn Swift and SwiftUI",
-      "Developed first web application",
+      "Learnt Swift and SwiftUI",
+      "Developed first website",
     ]
   },
-  {
-    year: "2020-2023",
-    title: "University",
-    institution: "Example University",
-    description: "BSc in Computer Science",
-    achievements: [
-      "First Class Honours",
-      "Led team projects in web development",
-      "Created multiple full-stack applications"
-    ]
-  },
+
 ];
 
 export default function History() {
@@ -93,7 +83,9 @@ export default function History() {
               >
                 <div className={`w-[calc(50%-3rem)] ${
                   index % 2 === 0 ? 'mr-auto' : 'ml-auto'
-                } bg-gray-900/50 backdrop-blur-[3px] border border-gray-800 rounded-xl p-12`}>
+                } bg-blue-500/10 backdrop-blur-sm rounded-xl p-8 border border-blue-400/20
+                   shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300 hover:scale-105
+                   hover:shadow-[0_0_25px_rgba(59,130,246,0.3)]`}>
                   <span className="text-blue-400 font-mono text-lg">{item.year}</span>
                   <h3 className="text-2xl font-bold mt-4">{item.title}</h3>
                   <p className="text-gray-400 mt-3 text-lg">{item.institution}</p>
