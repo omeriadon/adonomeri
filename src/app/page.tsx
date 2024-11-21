@@ -54,8 +54,7 @@ export default function Home() {
               key={index}
               href={link.href}
               className="block bg-blue-500/10 backdrop-blur-sm rounded-xl p-8 border border-blue-400/20
-                       shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300 hover:scale-105
-                       hover:shadow-[0_0_25px_rgba(59,130,246,0.3)]"
+                       shadow-[0_0_15px_rgba(59,130,246,0.2)]"
             >
               <i className={`${link.icon} text-blue-400 text-3xl mb-4 block`}></i>
               <h2 className="text-2xl font-bold text-blue-400 mb-3">{link.title}</h2>
