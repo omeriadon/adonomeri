@@ -1,7 +1,3 @@
-'use client';
-
-import { useThemeStore } from './stores/themeStore';
-import { useEffect } from 'react';
 import type { Metadata } from "next";
 import "./styles/globals.css";
 import Navbar from "./components/Navbar";
@@ -17,23 +13,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const { theme } = useThemeStore();
-  
-  useEffect(() => {
-    const root = window.document.documentElement;
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      root.classList.toggle('dark', systemTheme === 'dark');
-    } else {
-      root.classList.toggle('dark', theme === 'dark');
-    }
-  }, [theme]);
-
   return (
-    <html lang="en">
-      <body className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+    <html lang="en" className="dark">
+      <body className="min-h-screen bg-gray-900 text-gray-100">
         <Navbar />
-        <main className="container mx-auto px-4 py-8">
+        <main className="container mx-auto px-4 py-8 pb-20">
           {children}
         </main>
         <Footer />

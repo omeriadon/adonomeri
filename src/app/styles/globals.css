@@ -2,17 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 229, 231, 235;
-  --background-rgb: 17, 24, 39;
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
+  background: rgb(17, 24, 39);
+  color: rgb(229, 231, 235);
 }
 
-/* Optional: Style scrollbar for Webkit browsers */
 ::-webkit-scrollbar {
   width: 10px;
 }
