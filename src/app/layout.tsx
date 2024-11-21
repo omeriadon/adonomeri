@@ -1,18 +1,11 @@
+'use client';
+
+import { useThemeStore } from './stores/themeStore';
+import { useEffect } from 'react';
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./styles/globals.css";
-
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,10 +17,26 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const { theme } = useThemeStore();
+  
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (theme === 'system') {
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.classList.toggle('dark', systemTheme === 'dark');
+    } else {
+      root.classList.toggle('dark', theme === 'dark');
+    }
+  }, [theme]);
+
   return (
-    <html lang="en" className="dark">
-      <body className="bg-gray-900 text-gray-100">
-        {children}
+    <html lang="en">
+      <body className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+        <Navbar />
+        <main className="container mx-auto px-4 py-8">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
