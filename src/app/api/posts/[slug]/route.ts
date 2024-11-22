@@ -1,4 +1,4 @@
-// src/app/api/blog/[slug]/route.ts
+// src/app/api/posts/[slug]/route.ts
 import { promises as fs } from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
@@ -7,9 +7,9 @@ import { NextRequest } from 'next/server'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  context: { params: { slug: string } }
 ) {
-  const { slug } = params
+  const { slug } = context.params
   
   const postsDirectory = path.join(process.cwd(), 'public/content/blog')
   const filePath = path.join(postsDirectory, `${slug}.md`)
