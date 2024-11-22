@@ -1,8 +1,7 @@
-"use client";
+"use client"
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-
 import PageTitle from "../components/PageTitle";
 
 interface BlogPost {
@@ -13,22 +12,18 @@ interface BlogPost {
   excerpt: string;
 }
 
-const blogPosts: BlogPost[] = [
-  {
-    slug: "first-post",
-    title: "My First Blog Post",
-    date: "2024-03-20",
-    tags: ["programming", "web-development"],
-    excerpt: "This is my first blog post about web development..."
-  },
-  // Add more posts here
-];
-
 export default function Blog() {
+  const [posts, setPosts] = useState<BlogPost[]>([]);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
+    const fetchPosts = async () => {
+      const response = await fetch('/api/posts');
+      const posts = await response.json();
+      setPosts(posts);
+    };
+    fetchPosts();
   }, []);
 
   return (
@@ -37,13 +32,12 @@ export default function Blog() {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}>
         <div className="max-w-7xl mx-auto">
-        <PageTitle 
-  title="Blog"
-  description="Thoughts, tutorials, and insights about programming and technology."
-/>
-
+          <PageTitle 
+            title="Blog"
+            description="Thoughts, tutorials, and insights about programming and technology."
+          />
           <div className="space-y-8">
-            {blogPosts.map((post) => (
+            {posts.map((post) => (
               <Link 
                 key={post.slug}
                 href={`/blog/${post.slug}`}
