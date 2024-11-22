@@ -4,20 +4,19 @@ import matter from 'gray-matter';
 import { marked } from 'marked';
 import hljs from 'highlight.js';
 import { notFound } from 'next/navigation';
+import 'highlight.js/styles/default.css';
 
-interface BlogPostProps {
-  params: { slug: string };
-}
+type BlogParams = Promise<{ slug: string }>;
 
-export default async function BlogPost({ params }: BlogPostProps) {
-  const { slug } = params;
+export default async function BlogPost(props: { params: BlogParams }) {
+  // Await the params
+  const { slug } = await props.params;
   const filePath = path.join(process.cwd(), 'content/blog', `${slug}.md`);
 
   try {
     const fileContent = await fs.readFile(filePath, 'utf8');
     const { data, content } = matter(fileContent);
 
-    // Configure marked to use highlight.js
     marked.setOptions({
       renderer: new marked.Renderer(),
       gfm: true,
@@ -27,7 +26,6 @@ export default async function BlogPost({ params }: BlogPostProps) {
       }
     } as any);
 
-    // Convert markdown to HTML
     const htmlContent = marked(content);
 
     return (

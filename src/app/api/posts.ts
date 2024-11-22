@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import matter from 'gray-matter';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: NextApiRequest, res: NextApiResponse) {
   try {
     const files = await fs.readdir(path.join(process.cwd(), 'content/blog'));
     const posts = await Promise.all(
