@@ -4,6 +4,7 @@ import * as marked from 'marked';
 import matter from 'gray-matter';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github-dark.css';
+import '../../styles/markdownStyles.css';
 
 // Types for blog post metadata
 interface BlogPost {
@@ -70,12 +71,14 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         </div>
       </main>
     );
-  } catch (error) {
-    console.error('Error loading blog post:', error);
+  } catch {
+    console.error('Error loading blog post');
     return (
       <div className="max-w-4xl mx-auto px-4 py-8 text-red-400">
         Failed to load blog post
       </div>
     );
   }
+  
+
 }
