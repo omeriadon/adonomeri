@@ -47,38 +47,29 @@ export default function Footer() {
                   Projects
                 </Link>
               </li>
+              <li>
+                <Link 
+                  href="/blog" 
+                  className="px-3 py-2 rounded-lg hover:bg-gray-800/50 hover:text-blue-400 transition-all duration-200 -ml-3"
+                >
+                  Blog
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Social Links */}
           <div className="p-6 rounded-lg bg-gray-900/50 backdrop-blur-sm border border-gray-800
                         shadow-lg transition-all duration-300 hover:scale-105">
             <h3 className="text-xl font-semibold mb-4 text-blue-400">Connect</h3>
-            <div className="space-y-2">
-              <a 
-                href="https://github.com/omeriadon" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="px-3 py-2 rounded-lg hover:bg-gray-800/50 hover:text-blue-400 transition-all duration-200 -ml-3 block"
-              >
-                <i className="bi bi-github mr-2"></i>
-                GitHub
+            <div className="flex space-x-4">
+              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer"
+                 className="text-2xl hover:text-blue-400 transition-colors">
+                <i className="bi bi-github"></i>
               </a>
-              <a 
-                href="https://twitter.com/AdonOmeri" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="px-3 py-2 rounded-lg hover:bg-gray-800/50 hover:text-blue-400 transition-all duration-200 -ml-3 block"
-              >
-                <i className="bi bi-twitter-x mr-2"></i>
-                Twitter
-              </a>
-              <a 
-                href="mailto:omeriadon@outlook.com"
-                className="px-3 py-2 rounded-lg hover:bg-gray-800/50 hover:text-blue-400 transition-all duration-200 -ml-3 block"
-              >
-                <i className="bi bi-envelope mr-2"></i>
-                Email
+              <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer"
+                 className="text-2xl hover:text-blue-400 transition-colors">
+                <i className="bi bi-linkedin"></i>
               </a>
             </div>
           </div>

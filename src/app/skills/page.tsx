@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { skillsData, additionalSkills, sectionTitles } from '../data/skills';
+import PageTitle from "../components/PageTitle";
 
 export default function Skills() {
   const [isVisible, setIsVisible] = useState(false);
@@ -104,13 +105,10 @@ export default function Skills() {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}>
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-5xl font-bold text-center mb-8 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-            Skills & Expertise
-          </h1>
-          
-          <p className="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
-            A comprehensive overview of my technical skills and proficiency levels across different domains.
-          </p>
+          <PageTitle 
+            title="Skills & Expertise"
+            description="A comprehensive overview of my technical skills and proficiency levels across different domains."
+/>
 
           {Object.entries(skillsData).map(([key, value], index) => 
             renderCategory(sectionTitles[key as keyof typeof sectionTitles], value, index)

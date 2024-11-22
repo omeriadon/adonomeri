@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from 'react';
+import PageTitle from "../components/PageTitle";
 
 const timelineData = [
   {
@@ -46,13 +47,10 @@ export default function History() {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}>
         <div className="max-w-7xl mx-auto relative">
-          <h1 className="text-5xl font-bold text-center mb-8 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-            My Journey
-          </h1>
-          
-          <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-            Explore my educational background and professional development milestones.
-          </p>
+          <PageTitle 
+            title="My Journey"
+            description="Explore my educational background and professional development milestones."
+/>
 
           <div 
             className="absolute left-1/2 top-80 -translate-x-1/2" 

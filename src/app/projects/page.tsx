@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import PageTitle from "../components/PageTitle";
 
 const projectsData = [
   {
@@ -30,13 +31,10 @@ export default function Projects() {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}>
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-5xl font-bold text-center mb-8 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-            My Projects
-          </h1>
-          
-          <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-            Here are some of the projects I've worked on. Each project represents a unique challenge and learning experience.
-          </p>
+        <PageTitle 
+  title="My Projects"
+  description="Here are some of the projects I've worked on. Each project represents a unique challenge and learning experience."
+/>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {projectsData.map((project, index) => {
