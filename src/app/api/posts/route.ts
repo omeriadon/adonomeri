@@ -5,11 +5,13 @@ import { marked } from 'marked';
 import { NextRequest } from 'next/server';
 
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { slug: string } }
+  request: NextRequest
 ) {
+  const url = new URL(request.url);
+  const slug = url.pathname.split('/').pop();
+  
   const postsDirectory = path.join(process.cwd(), 'public/content/blog');
-  const filePath = path.join(postsDirectory, `${params.slug}.md`);
+  const filePath = path.join(postsDirectory, `${slug}.md`);
 
   try {
     const fileContents = await fs.readFile(filePath, 'utf8');
