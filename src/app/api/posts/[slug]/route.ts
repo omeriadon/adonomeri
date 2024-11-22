@@ -7,9 +7,9 @@ import { NextRequest } from 'next/server'
 
 export async function GET(
   request: NextRequest,
-  context: { params: { slug: string } }
+  { params }: { params: { slug: string } }
 ) {
-  const { slug } = context.params
+  const { slug } = params
   
   const postsDirectory = path.join(process.cwd(), 'public/content/blog')
   const filePath = path.join(postsDirectory, `${slug}.md`)
