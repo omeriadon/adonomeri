@@ -11,6 +11,7 @@
   "dependencies": {
     "bootstrap-icons": "^1.11.3",
     "gray-matter": "^4.0.3",
+    "highlight.js": "^11.10.0",
     "marked": "^15.0.2",
     "next": "15.0.3",
     "react": "18.2.0",
@@ -18,6 +19,8 @@
     "zustand": "^5.0.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/marked": "^5.0.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
