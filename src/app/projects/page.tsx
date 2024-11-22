@@ -32,8 +32,9 @@ export default function Projects() {
       }`}>
         <div className="max-w-7xl mx-auto">
         <PageTitle 
-  title="My Projects"
-  description="Here are some of the projects I've worked on. Each project represents a unique challenge and learning experience."
+          title="My Projects"
+          description="Here are some of the projects I've worked on. Each project represents a unique challenge and learning experience."
+          icon="bi bi-code-square"
 />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">

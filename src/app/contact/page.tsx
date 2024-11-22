@@ -41,6 +41,7 @@ export default function Contact() {
           <PageTitle 
             title="Contact Me"
             description="Get in touch with me through any of these platforms."
+            icon="bi bi-envelope"
           />
           
           <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">

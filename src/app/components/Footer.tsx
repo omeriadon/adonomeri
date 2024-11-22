@@ -28,6 +28,7 @@ export default function Footer() {
                   href="/journey" 
                   className="px-3 py-2 rounded-lg hover:bg-gray-800/50 hover:text-blue-400 transition-all duration-200 -ml-3"
                 >
+                  <i className="bi bi-clock-history mr-2"></i>
                   Journey
                 </Link>
               </li>
@@ -36,6 +37,7 @@ export default function Footer() {
                   href="/skills" 
                   className="px-3 py-2 rounded-lg hover:bg-gray-800/50 hover:text-blue-400 transition-all duration-200 -ml-3"
                 >
+                  <i className="bi bi-tools mr-2"></i>
                   Skills
                 </Link>
               </li>
@@ -44,6 +46,7 @@ export default function Footer() {
                   href="/projects" 
                   className="px-3 py-2 rounded-lg hover:bg-gray-800/50 hover:text-blue-400 transition-all duration-200 -ml-3"
                 >
+                  <i className="bi bi-code-square mr-2"></i>
                   Projects
                 </Link>
               </li>
@@ -52,6 +55,7 @@ export default function Footer() {
                   href="/blog" 
                   className="px-3 py-2 rounded-lg hover:bg-gray-800/50 hover:text-blue-400 transition-all duration-200 -ml-3"
                 >
+                  <i className="bi bi-journal-text mr-2"></i>
                   Blog
                 </Link>
               </li>
@@ -62,17 +66,43 @@ export default function Footer() {
           <div className="p-6 rounded-lg bg-gray-900/50 backdrop-blur-sm border border-gray-800
                         shadow-lg transition-all duration-300 hover:scale-105">
             <h3 className="text-xl font-semibold mb-4 text-blue-400">Connect</h3>
-            <div className="flex space-x-4">
-              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer"
-                 className="text-2xl hover:text-blue-400 transition-colors">
-                <i className="bi bi-github"></i>
-              </a>
-              <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer"
-                 className="text-2xl hover:text-blue-400 transition-colors">
-                <i className="bi bi-linkedin"></i>
-              </a>
-            </div>
+            <ul className="space-y-2">
+              <li>
+              
+
+                <Link 
+                  href="https://github.com/omeriadon" 
+                  className="px-3 py-2 rounded-lg hover:bg-gray-800/50 hover:text-blue-400 transition-all duration-200 -ml-3"
+                >
+                  <i className="bi bi-github mr-2"></i>
+                  Github
+                </Link>
+              </li>
+              <li>
+
+                <Link 
+                
+                  href="mailto:omeriadon@outlook.com" 
+                  className="px-3 py-2 rounded-lg hover:bg-gray-800/50 hover:text-blue-400 transition-all duration-200 -ml-3"
+                >
+                  <i className="bi bi-envelope mr-2"></i>
+                  Email
+                </Link>
+              </li>
+
+            </ul>
           </div>
+
+
+
+
+
+          
+
+
+
+
+
         </div>
       </div>
     </footer>

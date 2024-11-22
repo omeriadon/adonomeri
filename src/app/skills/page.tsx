@@ -122,6 +122,7 @@ export default function Skills() {
           <PageTitle 
             title="Skills & Expertise"
             description="A comprehensive overview of my technical skills and proficiency levels across different domains."
+            icon="bi bi-tools"
 />
 
           {Object.entries(skillsData).map(([key, value], index) => 

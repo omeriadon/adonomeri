@@ -50,6 +50,7 @@ export default function History() {
           <PageTitle 
             title="My Journey"
             description="Explore my educational background and professional development milestones."
+            icon="bi bi-clock-history"
 />
 
           <div 

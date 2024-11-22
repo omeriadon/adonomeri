@@ -5,6 +5,7 @@ import { marked } from 'marked';
 import hljs from 'highlight.js';
 import { notFound } from 'next/navigation';
 import 'highlight.js/styles/default.css';
+import { formatDate } from '@/utils/formatDate';
 
 type BlogParams = Promise<{ slug: string }>;
 
@@ -29,10 +30,21 @@ export default async function BlogPost(props: { params: BlogParams }) {
     const htmlContent = marked(content);
 
     return (
-      <div className="markdown">
-        <h1>{data.title}</h1>
-        <p>{data.date}</p>
-        <div>{data.tags.join(', ')}</div>
+      <div className="markdown max-w-4xl mx-auto pt-32 px-4">
+        <h1 className="text-4xl font-bold text-blue-400 mb-4">{data.title}</h1>
+        <div className="flex flex-wrap items-center gap-2 mb-8">
+          <span className="px-3 py-1 bg-gray-700/50 text-gray-300 rounded-full text-sm">
+            {formatDate(data.date)}
+          </span>
+          {data.tags.map((tag: string) => (
+            <span
+              key={tag}
+              className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
       </div>
     );
