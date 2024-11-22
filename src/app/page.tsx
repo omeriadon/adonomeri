@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import BackgroundIcons from './components/BackgroundIcons';
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,8 +33,9 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen pt-32 px-4 max-w-6xl mx-auto">
-      <div className={`space-y-16 transition-all duration-1000 ${
+    <main className="min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden">
+      <BackgroundIcons />
+      <div className={`space-y-16 transition-all duration-1000 relative z-10 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}>
         {/* Hero Section */}

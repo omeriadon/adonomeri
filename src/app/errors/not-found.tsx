@@ -1,9 +1,11 @@
 import Link from 'next/link';
+import BackgroundIcons from '../components/BackgroundIcons';
 
 export default function NotFound() {
     return (
-      <div className="min-h-screen flex items-center justify-center px-4">
-        <div className="text-center">
+      <div className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+        <BackgroundIcons />
+        <div className="text-center relative z-10">
           <h2 className="text-2xl font-bold text-blue-400 mb-4">
             404 - Page Not Found
           </h2>
