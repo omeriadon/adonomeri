@@ -38,7 +38,7 @@ export default function Skills() {
           >
             <h4 className="text-xl font-bold text-blue-400 mb-6">{category.category}</h4>
             <div className="space-y-6">
-              {category.skills.map((skill: any, skillIndex: number) => (
+              {category.skills.map((skill: Skill, skillIndex: number) => (
                 <div key={`${keyPrefix}-${index}-${skillIndex}`}>
                   <div className="flex justify-between mb-2">
                     <span className="text-gray-300">{skill.name}</span>
@@ -67,7 +67,7 @@ export default function Skills() {
       {Object.entries(category).map(([key, value], sectionIndex) => 
         renderSkillSection(
           key.charAt(0).toUpperCase() + key.slice(1), 
-          value as any[],
+          value as SkillCategory[],
           `${index}-${sectionIndex}`
         )
       )}

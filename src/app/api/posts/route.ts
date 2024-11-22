@@ -27,7 +27,7 @@ export async function getPost(
       tags: data.tags,
       content: htmlContent
     });
-  } catch (_error) {
+  } catch {
     return Response.json({ error: 'Post not found' }, { status: 404 });
   }
 }
