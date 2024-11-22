@@ -4,6 +4,20 @@ import { useEffect, useState } from 'react';
 import { skillsData, additionalSkills, sectionTitles } from '../data/skills';
 import PageTitle from "../components/PageTitle";
 
+interface Skill {
+  name: string;
+  level: number;
+}
+
+interface SkillCategory {
+  category: string;
+  skills: Skill[];
+}
+
+interface CategorySection {
+  [key: string]: SkillCategory[];
+}
+
 export default function Skills() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -11,7 +25,7 @@ export default function Skills() {
     setIsVisible(true);
   }, []);
 
-  const renderSkillSection = (title: string, skills: any[], keyPrefix: string) => (
+  const renderSkillSection = (title: string, skills: SkillCategory[], keyPrefix: string) => (
     <div key={`section-${keyPrefix}`} className="mb-16">
       <h3 className="text-2xl font-bold mb-8 text-blue-400">{title}</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
@@ -45,7 +59,7 @@ export default function Skills() {
     </div>
   );
 
-  const renderCategory = (title: string, category: any, index: number) => (
+  const renderCategory = (title: string, category: CategorySection, index: number) => (
     <div key={`category-${index}`} className="mb-24">
       <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
         {title}

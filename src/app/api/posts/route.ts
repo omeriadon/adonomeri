@@ -27,13 +27,11 @@ export async function getPost(
       tags: data.tags,
       content: htmlContent
     });
-  } catch (error) {
+  } catch (_error) {
     return Response.json({ error: 'Post not found' }, { status: 404 });
   }
 }
 
-export async function getPosts(
-  request: Request
-) {
+export async function getPosts() {
   // handle all posts, e.g., return a list of titles and slugs
 }

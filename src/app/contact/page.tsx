@@ -44,7 +44,7 @@ export default function Contact() {
           />
           
           <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-            Choose your preferred way to get in touch. I'm always open to new opportunities and conversations.
+            I&apos;m always open to new opportunities and conversations.
           </p>
 
           <div className="max-w-2xl mx-auto space-y-6">
