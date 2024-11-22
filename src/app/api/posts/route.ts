@@ -3,18 +3,13 @@ import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 
-interface Params {
-  params: {
-    slug: string;
-  };
-}
-
-export async function getPost(
+// GET /api/posts/[slug]
+export async function GET(
   request: Request,
-  context: Params
+  { params }: { params: { slug: string } }
 ) {
   const postsDirectory = path.join(process.cwd(), 'public/content/blog');
-  const filePath = path.join(postsDirectory, `${context.params.slug}.md`);
+  const filePath = path.join(postsDirectory, `${params.slug}.md`);
 
   try {
     const fileContents = await fs.readFile(filePath, 'utf8');
@@ -30,8 +25,4 @@ export async function getPost(
   } catch {
     return Response.json({ error: 'Post not found' }, { status: 404 });
   }
-}
-
-export async function getPosts() {
-  // handle all posts, e.g., return a list of titles and slugs
 }
