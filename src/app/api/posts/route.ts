@@ -4,19 +4,12 @@ import matter from 'gray-matter';
 import { marked } from 'marked';
 import { NextRequest } from 'next/server';
 
-// For dynamic route segments
-interface Context {
-  params: {
-    slug: string;
-  };
-}
-
 export async function GET(
   request: NextRequest,
-  context: Context
+  { params }: { params: { slug: string } }
 ) {
   const postsDirectory = path.join(process.cwd(), 'public/content/blog');
-  const filePath = path.join(postsDirectory, `${context.params.slug}.md`);
+  const filePath = path.join(postsDirectory, `${params.slug}.md`);
 
   try {
     const fileContents = await fs.readFile(filePath, 'utf8');
