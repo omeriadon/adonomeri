@@ -1,68 +1,55 @@
-"use client"
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
+import fs from 'fs/promises';
+import path from 'path';
+import matter from 'gray-matter';
+import React from 'react';
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import PageTitle from "../components/PageTitle";
 
-interface BlogPost {
-  slug: string;
+interface BlogPostProps {
   title: string;
   date: string;
   tags: string[];
-  excerpt: string;
+  content: string;
 }
 
-export default function Blog() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-    const fetchPosts = async () => {
-      const response = await fetch('/api/posts');
-      const posts = await response.json();
-      setPosts(posts);
-    };
-    fetchPosts();
-  }, []);
+export default function BlogPost({ title, date, tags, content }: BlogPostProps) {
+  const router = useRouter();
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <div className="min-h-screen pt-32 pb-16 px-4 max-w-6xl mx-auto">
-      <div className={`transition-all duration-1000 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}>
-        <div className="max-w-7xl mx-auto">
-          <PageTitle 
-            title="Blog"
-            description="Thoughts, tutorials, and insights about programming and technology."
-          />
-          <div className="space-y-8">
-            {posts.map((post) => (
-              <Link 
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="block bg-blue-500/10 backdrop-blur-sm rounded-xl p-8 border border-blue-400/20
-                         shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300 hover:scale-105
-                         hover:shadow-[0_0_25px_rgba(59,130,246,0.3)]"
-              >
-                <h2 className="text-2xl font-bold text-blue-400 mb-2">{post.title}</h2>
-                <div className="flex gap-2 mb-4">
-                  {post.tags.map((tag) => (
-                    <span 
-                      key={tag}
-                      className="px-3 py-1 text-sm bg-blue-500/20 text-blue-400 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <p className="text-gray-400 text-sm mb-4">{post.date}</p>
-                <p className="text-gray-300">{post.excerpt}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
+    <div>
+      <h1>{title}</h1>
+      <p>{date}</p>
+      <div>{tags.join(', ')}</div>
+      <div dangerouslySetInnerHTML={{ __html: content }} />
     </div>
   );
-} 
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const files = await fs.readdir(path.join(process.cwd(), 'content/blog'));
+  const paths = files.map((filename) => ({
+    params: { slug: filename.replace('.md', '') },
+  }));
+
+  return { paths, fallback: true };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { slug } = params as { slug: string };
+  const filePath = path.join(process.cwd(), 'content/blog', `${slug}.md`);
+  const fileContent = await fs.readFile(filePath, 'utf8');
+  const { data, content } = matter(fileContent);
+
+  return {
+    props: {
+      title: data.title,
+      date: data.date,
+      tags: data.tags,
+      content,
+    },
+  };
+};
