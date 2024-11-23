@@ -55,7 +55,7 @@ export default function BackgroundIcons() {
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {floatingIcons.map((icon, index) => (
         <i key={index} 
-           className={`bi ${icon} absolute text-blue-400/10 text-4xl transition-all duration-[3000ms]`}
+           className={`bi ${icon} absolute text-blue-100/10 text-4xl transition-all duration-[3000ms]`}
            style={{
              left: `${positions[index]?.x}%`,
              top: `${positions[index]?.y}%`,
