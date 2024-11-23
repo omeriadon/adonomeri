@@ -1,11 +1,10 @@
-import { promises as fs } from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+"use client";
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import PageTitle from "../components/PageTitle";
 import { formatDate } from '@/utils/formatDate';
 import BackgroundIcons from '../components/BackgroundIcons';
-import { Montserrat as montserratFont } from 'next/font/google';  // Import directly from next/font/google
+import { Montserrat as montserratFont } from 'next/font/google';
 
 // Initialize the font
 const montserrat = montserratFont({ subsets: ['latin'] });
@@ -17,33 +16,38 @@ interface BlogPost {
   tags: string[];
 }
 
-async function getBlogPosts(): Promise<BlogPost[]> {
-  const postsDirectory = path.join(process.cwd(), 'content/blog');
-  const files = await fs.readdir(postsDirectory);
-  
-  const posts = await Promise.all(
-    files.map(async (filename) => {
-      const filePath = path.join(postsDirectory, filename);
-      const fileContent = await fs.readFile(filePath, 'utf8');
-      const { data } = matter(fileContent);
-      
-      return {
-        slug: filename.replace('.md', ''),
-        title: data.title,
-        date: data.date,
-        tags: data.tags,
-      };
-    })
-  );
-  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-}
+// Mock data for now - replace with actual data fetching
+const mockPosts: BlogPost[] = [
+  {
+    slug: 'first-blog-post',
+    title: 'First Blog Post',
+    date: '2024-03-22',
+    tags: ['next.js', 'react', 'web-development']
+  },
+  // Add more mock posts as needed
+];
 
-export default async function BlogPage() {
-  const posts = await getBlogPosts();
+export default function BlogPage() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [posts, setPosts] = useState<BlogPost[]>(mockPosts);
+
+  useEffect(() => {
+    setIsVisible(true);
+    // You can fetch posts here if needed
+    // const fetchPosts = async () => {
+    //   const response = await fetch('/api/posts');
+    //   const data = await response.json();
+    //   setPosts(data);
+    // };
+    // fetchPosts();
+  }, []);
+
   return (
     <div className={`min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden ${montserrat.className}`}>
       <BackgroundIcons />
-      <div className="relative z-10">
+      <div className={`transition-all duration-1000 relative z-10 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}>
         <PageTitle 
           title="Blog"
           description="Thoughts, tutorials, and insights about programming and technology."
@@ -57,9 +61,7 @@ export default async function BlogPage() {
               href={`/blog/${post.slug}`}
               className="block"
             >
-              <article className="p-6 bg-blue-500/10 backdrop-blur-sm rounded-lg transition-all duration-300 
-                         hover:bg-blue-500/20 hover:scale-[1.02] border border-blue-400/20
-                         shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+              <article className="card-hover">
                 <h2 className={`text-2xl font-bold text-blue-400 mb-4 ${montserrat.className}`}>
                   {post.title}
                 </h2>

@@ -49,9 +49,7 @@ const CategoryCard = ({ category, keyPrefix, index, isVisible }: {
 }) => (
   <div 
     key={`${keyPrefix}-${index}`}
-    className="bg-blue-500/10 backdrop-blur-sm rounded-xl p-8 border border-blue-400/20
-              shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300 hover:scale-105
-              hover:shadow-[0_0_25px_rgba(59,130,246,0.3)]"
+    className="card-hover"
   >
     <h4 className="text-xl font-bold text-blue-400 mb-6 font-montserrat">{category.category}</h4>
     <div className="space-y-6">
@@ -70,9 +68,7 @@ const AdditionalCard = ({ title, items }: {
   title: string; 
   items: Array<{ [key: string]: string }>;
 }) => (
-  <div className="bg-blue-500/10 backdrop-blur-sm rounded-xl p-8 border border-blue-400/20
-                shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300 hover:scale-105
-                hover:shadow-[0_0_25px_rgba(59,130,246,0.3)]">
+  <div className="card-hover">
     <h3 className="text-2xl font-bold text-blue-400 mb-6 font-montserrat">{title}</h3>
     <div className="space-y-4">
       {items.map((item, index) => (

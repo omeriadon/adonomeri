@@ -1,53 +1,84 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export default function BackgroundIcons() {
   const [mounted, setMounted] = useState(false);
-  const [positions, setPositions] = useState<Array<{x: number, y: number}>>([]);
+  const [positions, setPositions] = useState<Array<{ 
+    x: number; 
+    y: number;
+    speedX: number;
+    speedY: number;
+  }>>([]);
+  
+  const floatingIcons = [
+    "bi-code-slash",
+    "bi-braces",
+    "bi-terminal",
+    "bi-cpu",
+    "bi-git",
+    "bi-github",
+    "bi-database",
+    "bi-cloud",
+    "bi-laptop",
+    "bi-code-square",
+    "bi-window",
+    "bi-file-earmark-code",
+    "bi-diagram-3",
+    "bi-bug",
+    "bi-command",
+    "bi-keyboard",
+    "bi-mouse",
+    "bi-router",
+    "bi-server",
+    "bi-gpu-card",
+    "bi-motherboard",
+    "bi-pc-display",
+    "bi-phone",
+    "bi-tablet"
+  ];
 
   useEffect(() => {
     setMounted(true);
-    // Initial positions
-    setPositions(generatePositions());
+    // Initialize random positions and speeds
+    setPositions(floatingIcons.map(() => ({
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      speedX: (Math.random() - 0.5) * 0.2, // Random speed between -0.1 and 0.1
+      speedY: (Math.random() - 0.5) * 0.2
+    })));
 
-    // Update positions every 3 seconds
-    const interval = setInterval(() => {
-      setPositions(generatePositions());
-    }, 2000);
+    // Continuous animation
+    const animate = () => {
+      setPositions(prev => prev.map(pos => {
+        let newX = pos.x + pos.speedX;
+        let newY = pos.y + pos.speedY;
+        let newSpeedX = pos.speedX;
+        let newSpeedY = pos.speedY;
 
-    // Cleanup interval on unmount
-    return () => clearInterval(interval);
+        // Bounce off edges
+        if (newX <= 0 || newX >= 100) {
+          newSpeedX = -newSpeedX;
+          newX = Math.max(0, Math.min(100, newX));
+        }
+        if (newY <= 0 || newY >= 100) {
+          newSpeedY = -newSpeedY;
+          newY = Math.max(0, Math.min(100, newY));
+        }
+
+        return {
+          x: newX,
+          y: newY,
+          speedX: newSpeedX,
+          speedY: newSpeedY
+        };
+      }));
+    };
+
+    const animationInterval = setInterval(animate, 50);
+
+    return () => clearInterval(animationInterval);
   }, []);
-
-  const floatingIcons = [
-    "bi-code-square", "bi-journal-text", "bi-tools", 
-    "bi-github", "bi-envelope", "bi-clock-history",
-    "bi-house", "bi-twitter-x", "bi-linkedin",
-    "bi-braces", "bi-bug", "bi-cpu",
-    "bi-database", "bi-diagram-3", "bi-display",
-    "bi-file-earmark-code", "bi-gear", "bi-graph-up",
-    "bi-terminal", "bi-window-stack", "bi-boxes",
-    "bi-layers", "bi-magic", "bi-puzzle",
-  ];
-
-  const generatePositions = () => {
-    const gridSize = Math.ceil(Math.sqrt(floatingIcons.length));
-    const cellSize = 100 / gridSize;
-    
-    return floatingIcons.map((_, index) => {
-      const row = Math.floor(index / gridSize);
-      const col = index % gridSize;
-      const xOffset = (Math.random() * 0.5 + 0.25) * cellSize;
-      const yOffset = (Math.random() * 0.5 + 0.25) * cellSize;
-      
-      return {
-        x: col * cellSize + xOffset,
-        y: row * cellSize + yOffset
-      };
-    });
-  };
 
   if (!mounted) return null;
 
@@ -55,10 +86,11 @@ export default function BackgroundIcons() {
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {floatingIcons.map((icon, index) => (
         <i key={index} 
-           className={`bi ${icon} absolute text-blue-100/10 text-4xl transition-all duration-[3000ms]`}
+           className={`bi ${icon} absolute text-blue-100/10 text-3xl`}
            style={{
              left: `${positions[index]?.x}%`,
              top: `${positions[index]?.y}%`,
+             transition: 'all 0.5s linear'
            }}
         ></i>
       ))}

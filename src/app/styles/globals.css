@@ -76,3 +76,9 @@ body {
   font-family: var(--font-montserrat);
 }
 
+.card-hover {
+  @apply bg-blue-500/10 backdrop-blur-sm rounded-xl p-8 border border-blue-400/20
+         shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300 
+         hover:bg-blue-500/20 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(59,130,246,0.3)];
+}
+

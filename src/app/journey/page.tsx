@@ -88,15 +88,13 @@ export default function History() {
               >
                 <div className={`w-[calc(50%-3rem)] ${
                   index % 2 === 0 ? 'mr-auto' : 'ml-auto'
-                } bg-blue-500/10 backdrop-blur-sm rounded-xl p-8 border border-blue-400/20
-                   shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300 hover:scale-105
-                   hover:shadow-[0_0_25px_rgba(59,130,246,0.3)]`}>
+                } card-hover`}>
                   <span className="text-blue-400 font-mono text-lg">{item.year}</span>
                   <h3 className="text-xl font-bold text-blue-400 mb-2 font-montserrat">
                     {item.title}
                   </h3>
                   <p className="text-gray-400 mt-3 text-lg">{item.institution}</p>
-                  <p className="mt-8 text-lg">{item.description}</p>
+                  <p className="mt-8 text-lg text-gray-300">{item.description}</p>
                   <ul className="mt-8 space-y-4">
                     {item.achievements.map((achievement, i) => (
                       <li key={i} className="flex items-center text-gray-300 text-lg">

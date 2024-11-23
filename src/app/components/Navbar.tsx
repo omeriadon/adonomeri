@@ -18,7 +18,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed w-full bg-gray-950/80 backdrop-blur-sm border-b border-gray-800 z-50">
+    <nav className="fixed w-full bg-gray-900/60 backdrop-blur-md border-b border-gray-700/50 z-50">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="text-xl font-bold text-blue-400 hover:scale-105 transition-transform duration-200">
@@ -33,8 +33,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`px-3 py-2 rounded-lg flex items-center gap-2 transition-all duration-200 hover:scale-105 ${
                   pathname === link.href
-                    ? 'text-blue-400 bg-blue-500/10'
-                    : 'text-gray-300 hover:text-blue-400 hover:bg-blue-500/10'
+                    ? 'text-blue-400 bg-blue-500/20'
+                    : 'text-gray-200 hover:text-blue-400 hover:bg-blue-500/10'
                 }`}
               >
                 <i className={link.icon}></i>
@@ -43,10 +43,10 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - lighter background on hover */}
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-blue-500/10 transition-colors duration-200"
+            className="md:hidden p-2 rounded-lg hover:bg-blue-500/20 transition-colors duration-200"
           >
             <div className="space-y-1.5">
               <span className={`block w-6 h-0.5 bg-blue-400 transition-all duration-300 ${
@@ -62,7 +62,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu Panel */}
+        {/* Mobile Menu Panel - lighter background */}
         <div className={`md:hidden transition-all duration-300 ease-in-out ${
           isMenuOpen 
             ? 'max-h-[400px] opacity-100' 
@@ -76,8 +76,8 @@ export default function Navbar() {
                 onClick={() => setIsMenuOpen(false)}
                 className={`px-3 py-2 rounded-lg flex items-center gap-2 transition-all duration-200 hover:scale-105 ${
                   pathname === link.href
-                    ? 'text-blue-400 bg-blue-500/10'
-                    : 'text-gray-300 hover:text-blue-400 hover:bg-blue-500/10'
+                    ? 'text-blue-400 bg-blue-500/20'
+                    : 'text-gray-200 hover:text-blue-400 hover:bg-blue-500/10'
                 }`}
               >
                 <i className={link.icon}></i>

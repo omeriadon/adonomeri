@@ -16,22 +16,22 @@ export default function Home() {
 
   const links = [
     { 
-      href: "/projects", 
-      title: "Projects", 
-      desc: "Explore my latest work and side projects",
+      href: "/skills", 
+      title: "Coding", 
+      desc: "Exploring the art of programming and software development",
       icon: "bi-code-square"
     },
     { 
-      href: "/blog", 
-      title: "Blog", 
-      desc: "Technical articles and development insights",
-      icon: "bi-journal-text"
+      href: "/projects", 
+      title: "Technology", 
+      desc: "Discovering and implementing cutting-edge tech solutions",
+      icon: "bi-cpu"
     },
     { 
-      href: "/skills", 
-      title: "Skills", 
-      desc: "Technologies and tools I work with",
-      icon: "bi-tools"
+      href: "/blog", 
+      title: "Placeholder", 
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+      icon: "bi-lightbulb"
     }
   ];
 
@@ -57,15 +57,13 @@ export default function Home() {
               <Link 
                 href={link.href} 
                 key={index}
-                className="bg-blue-500/10 backdrop-blur-sm rounded-xl p-8 border border-blue-400/20
-                           shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300 
-                           hover:scale-105 hover:shadow-[0_0_25px_rgba(59,130,246,0.3)]"
+                className="card-hover"
               >
                 <i className={`${link.icon} text-blue-400 text-3xl mb-6 block`}></i>
                 <h2 className={`text-2xl font-bold text-blue-400 mb-4 ${montserrat.className}`}>
                   {link.title}
                 </h2>
-                <p className="text-gray-300 text-3xl">
+                <p className="text-gray-300 text-2xl">
                   {link.desc}
                 </p>
               </Link>

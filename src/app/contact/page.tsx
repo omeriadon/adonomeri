@@ -47,12 +47,15 @@ export default function Contact() {
       }`}>
         <PageTitle 
           title="Contact"
-          description="Get in touch with me through any of these platforms."
+          description={(
+            <>
+              <span className="block mb-2">Get in touch with me through any of these platforms.</span>
+              <span className="block">I'm always open to new opportunities and conversations.</span>
+            </>
+          )}
           icon="bi bi-envelope"
         />
-        <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-          I&apos;m always open to new opportunities and conversations.
-        </p>
+
         <div className="max-w-2xl mx-auto space-y-6">
           {contactMethods.map((method, index) => (
             method.link ? (
@@ -61,14 +64,12 @@ export default function Contact() {
                 href={method.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-blue-500/10 backdrop-blur-sm rounded-xl p-8 border border-blue-400/20
-                         shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300 hover:scale-[1.02]
-                         hover:shadow-[0_0_25px_rgba(59,130,246,0.3)]"
+                className="card-hover block"
               >
                 <div className="flex items-center">
                   <i className={`${method.icon} text-blue-400 text-3xl mr-6`}></i>
                   <div>
-                    <h3 className="text-lg font-semibold font-montserrat">
+                    <h3 className="text-2xl font-bold text-blue-400 mb-3 font-montserrat">
                       {method.title}
                     </h3>
                     <p className="text-gray-300">{method.description}</p>
@@ -78,8 +79,7 @@ export default function Contact() {
             ) : (
               <div
                 key={index}
-                className="block bg-blue-500/10 backdrop-blur-sm rounded-xl p-8 border border-blue-400/20
-                         shadow-[0_0_15px_rgba(59,130,246,0.2)]"
+                className="card-hover block"
               >
                 <div className="flex items-center">
                   <i className={`${method.icon} text-blue-400 text-3xl mr-6`}></i>

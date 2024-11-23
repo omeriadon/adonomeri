@@ -2,7 +2,7 @@
 
 interface PageTitleProps {
   title: string;
-  description: string;
+  description: React.ReactNode;
   icon?: string;
 }
 
