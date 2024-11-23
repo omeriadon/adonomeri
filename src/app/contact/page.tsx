@@ -1,9 +1,15 @@
 "use client";
-
 import { useEffect, useState } from 'react';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import PageTitle from '../components/PageTitle';
 import BackgroundIcons from '../components/BackgroundIcons';
+import { Montserrat } from 'next/font/google';
+
+// Initialize Montserrat font
+const montserrat = Montserrat({ 
+  subsets: ['latin'],
+  variable: '--font-montserrat', // Add this for proper font variable usage
+});
 
 const contactMethods = [
   {
@@ -34,7 +40,7 @@ export default function Contact() {
   }, []);
 
   return (
-    <div className="min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden">
+    <div className={`min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden ${montserrat.variable}`}>
       <BackgroundIcons />
       <div className={`transition-all duration-1000 relative z-10 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -47,7 +53,6 @@ export default function Contact() {
         <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
           I&apos;m always open to new opportunities and conversations.
         </p>
-
         <div className="max-w-2xl mx-auto space-y-6">
           {contactMethods.map((method, index) => (
             method.link ? (
@@ -63,7 +68,9 @@ export default function Contact() {
                 <div className="flex items-center">
                   <i className={`${method.icon} text-blue-400 text-3xl mr-6`}></i>
                   <div>
-                    <h3 className="text-2xl font-bold text-blue-400 mb-2">{method.title}</h3>
+                    <h3 className="text-lg font-semibold font-montserrat">
+                      {method.title}
+                    </h3>
                     <p className="text-gray-300">{method.description}</p>
                   </div>
                 </div>
@@ -77,7 +84,9 @@ export default function Contact() {
                 <div className="flex items-center">
                   <i className={`${method.icon} text-blue-400 text-3xl mr-6`}></i>
                   <div>
-                    <h3 className="text-2xl font-bold text-blue-400 mb-2">{method.title}</h3>
+                    <h3 className="text-2xl font-bold text-blue-400 mb-3 font-montserrat">
+                      {method.title}
+                    </h3>
                     <p className="text-gray-300">{method.description}</p>
                   </div>
                 </div>

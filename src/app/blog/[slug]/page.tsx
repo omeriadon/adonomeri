@@ -8,8 +8,12 @@ import 'highlight.js/styles/default.css';
 import { formatDate } from '@/utils/formatDate';
 import '../../styles/markdownStyles.css';
 import BackgroundIcons from '../../components/BackgroundIcons';
+import { Montserrat } from 'next/font/google';
 
 type BlogParams = Promise<{ slug: string }>;
+
+// Initialize the font
+const montserrat = Montserrat({ subsets: ['latin'] });
 
 export default async function BlogPost(props: { params: BlogParams }) {
   // Await the params
@@ -35,7 +39,9 @@ export default async function BlogPost(props: { params: BlogParams }) {
       <div className="markdown max-w-4xl mx-auto pt-32 px-4 relative overflow-hidden">
         <BackgroundIcons />
         <div className="relative z-10">
-          <h1 className="text-4xl font-bold text-blue-400 mb-4">{data.title}</h1>
+          <h1 className={`text-4xl font-bold text-blue-400 mb-4 ${montserrat.className}`}>
+            {data.title}
+          </h1>
           <div className="flex flex-wrap items-center gap-2 mb-8">
             <span className="px-3 py-1 bg-gray-700/50 text-gray-300 rounded-full text-sm">
               {formatDate(data.date)}
