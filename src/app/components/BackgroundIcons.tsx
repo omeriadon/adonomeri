@@ -15,7 +15,7 @@ export default function BackgroundIcons() {
     // Update positions every 3 seconds
     const interval = setInterval(() => {
       setPositions(generatePositions());
-    }, 5000);
+    }, 2000);
 
     // Cleanup interval on unmount
     return () => clearInterval(interval);
