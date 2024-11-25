@@ -28,25 +28,23 @@ const mockPosts: BlogPost[] = [
 ];
 
 export default function BlogPage() {
-  const [isVisible, setIsVisible] = useState(false);
   const [posts, setPosts] = useState<BlogPost[]>(mockPosts);
 
-  useEffect(() => {
-    setIsVisible(true);
-    // You can fetch posts here if needed
-    // const fetchPosts = async () => {
-    //   const response = await fetch('/api/posts');
-    //   const data = await response.json();
-    //   setPosts(data);
-    // };
-    // fetchPosts();
-  }, []);
+  // useEffect(() => {
+
+  //   // You can fetch posts here if needed
+  //   // const fetchPosts = async () => {
+  //   //   const response = await fetch('/api/posts');
+  //   //   const data = await response.json();
+  //   //   setPosts(data);
+  //   // };
+  //   // fetchPosts();
+  // }, []);
 
   return (
     <div className={`min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden ${montserrat.className}`}>
       <BackgroundIcons />
-      <div className={`transition-all duration-1000 relative z-10 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      <div className={` relative z-10 '
       }`}>
         <PageTitle 
           title="Blog"

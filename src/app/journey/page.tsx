@@ -24,12 +24,10 @@ const timelineData = [
 ];
 
 export default function History() {
-  const [isVisible, setIsVisible] = useState(false);
   const timelineRef = useRef<HTMLDivElement>(null);
   const [lineHeight, setLineHeight] = useState(0);
 
   useEffect(() => {
-    setIsVisible(true);
     
     const updateLineHeight = () => {
       if (timelineRef.current) {
@@ -51,8 +49,7 @@ export default function History() {
   return (
     <div className={`min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden ${montserrat.variable}`}>
       <BackgroundIcons />
-      <div className={`transition-all duration-1000 relative z-10 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      <div className={`transition-all duration-1000 relative z-10 '
       }`}>
         <div className="max-w-7xl mx-auto relative">
           <PageTitle 
