@@ -6,11 +6,11 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-950 text-gray-300 mt-20 border-t border-gray-800">
+    <footer className="bg-gray-950 text-gray-300  border-t border-gray-800">
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Bio Section */}
-          <div className="p-6 rounded-lg bg-gray-900/50 backdrop-blur-sm border border-gray-800
+          <div className="p-6 rounded-lg hover:rounded-3xl bg-gray-900/50 backdrop-blur-sm border border-gray-800
                         shadow-lg transition-all duration-300 hover:scale-105">
             <h3 className="text-xl font-semibold mb-4 text-blue-400">About Me</h3>
             <p className="text-gray-400">
@@ -19,7 +19,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="p-6 rounded-lg bg-gray-900/50 backdrop-blur-sm border border-gray-800
+          <div className="p-6 rounded-lg hover:rounded-3xl bg-gray-900/50 backdrop-blur-sm border border-gray-800
                         shadow-lg transition-all duration-300 hover:scale-105">
             <h3 className="text-xl font-semibold mb-4 text-blue-400">Quick Links</h3>
             <ul className="space-y-2">
@@ -63,7 +63,7 @@ export default function Footer() {
           </div>
 
           {/* Social Links */}
-          <div className="p-6 rounded-lg bg-gray-900/50 backdrop-blur-sm border border-gray-800
+          <div className="p-6 rounded-lg hover:rounded-3xl bg-gray-900/50 backdrop-blur-sm border border-gray-800
                         shadow-lg transition-all duration-300 hover:scale-105">
             <h3 className="text-xl font-semibold mb-4 text-blue-400">Connect</h3>
             <ul className="space-y-2">

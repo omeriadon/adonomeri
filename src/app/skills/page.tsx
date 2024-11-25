@@ -108,7 +108,7 @@ export default function Skills() {
   );
 
   const renderCategory = (title: string, category: CategorySection, index: number) => (
-    <div key={`category-${index}`} className="mb-24">
+    <div key={`category-${index}`} className="mb-24 p-6 rounded-3xl border-blue-500/20 border-2">
       <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent font-montserrat">
         {title}
       </h2>
@@ -128,7 +128,7 @@ export default function Skills() {
       <div className={`transition-all duration-1000 relative z-10 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}>
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto ">
           <PageTitle 
             title="Skills & Expertise"
             description="A comprehensive overview of my technical skills and proficiency levels across different domains."
@@ -139,7 +139,7 @@ export default function Skills() {
             renderCategory(sectionTitles[key as keyof typeof sectionTitles], value, index)
           )}
           
-          <div className="mb-24">
+          <div className="mb-24 p-6 rounded-3xl border-blue-500/20 border-2" >
             <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent font-montserrat">
               {sectionTitles.additional}
             </h2>

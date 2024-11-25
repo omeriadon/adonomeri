@@ -16,19 +16,19 @@ export default function Home() {
 
   const links = [
     { 
-      href: "/skills", 
+      href: "/", 
       title: "Coding", 
       desc: "Exploring the art of programming and software development",
       icon: "bi-code-square"
     },
     { 
-      href: "/projects", 
+      href: "/", 
       title: "Technology", 
-      desc: "Discovering and implementing cutting-edge tech solutions",
-      icon: "bi-cpu"
+      desc: "Learning about Big Tech, Apple, and more",
+      icon: "bi-apple"
     },
     { 
-      href: "/blog", 
+      href: "/", 
       title: "Placeholder", 
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
       icon: "bi-lightbulb"
@@ -44,7 +44,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto space-y-16">
           {/* Hero Section */}
           <div className={`space-y-8 transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-            <h1 className={`text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent ${montserrat.className}`}>
+            <h1 className={`text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent  ${montserrat.className}`}>
               Hello! I'm Adon Omeri
             </h1>
             <p className="text-xl md:text-2xl text-gray-400">

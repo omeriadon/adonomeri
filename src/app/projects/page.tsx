@@ -15,7 +15,7 @@ const projectsData = [
     title: "Portfolio Website",
     description: "This website is a portfolio of my projects and skills.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-    link: "https://adonomeri.vercel.app"
+    link: "/"
   },
   {
     title: "Add apple app here",
