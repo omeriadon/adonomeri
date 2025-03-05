@@ -28,29 +28,22 @@ export default function History() {
   const [lineHeight, setLineHeight] = useState(0);
 
   useEffect(() => {
-    
     const updateLineHeight = () => {
       if (timelineRef.current) {
         const timelineHeight = timelineRef.current.getBoundingClientRect().height;
-        setLineHeight(timelineHeight + 100); // Add some padding at the bottom
+        setLineHeight(timelineHeight + 100);
       }
     };
 
-    // Initial measurement
     updateLineHeight();
-    
-    // Update on window resize
     window.addEventListener('resize', updateLineHeight);
-    
-    // Cleanup
     return () => window.removeEventListener('resize', updateLineHeight);
   }, []);
 
   return (
     <div className={`min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden ${montserrat.variable}`}>
       <BackgroundIcons />
-      <div className={`transition-all duration-1000 relative z-10 '
-      }`}>
+      <div className="transition-all duration-1000 relative z-10">
         <div className="max-w-7xl mx-auto relative">
           <PageTitle 
             title="My Journey"
@@ -58,23 +51,28 @@ export default function History() {
             icon="bi bi-clock-history"
           />
           <div 
-            className="absolute left-1/2 top-80 -translate-x-1/2" 
+            className="absolute left-1/2 -translate-x-1/2 top-80 w-4"
             style={{ height: `${lineHeight}px` }}
           >
-            <svg
-              className="h-full w-8 -translate-x-1/2"
-              viewBox="0 0 10 100"
+            <svg 
+              className="w-full h-full"
+              viewBox={`0 0 20 ${lineHeight}`}
               preserveAspectRatio="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M5,0 Q7,25 3,50 Q-1,75 5,100"
-                stroke="rgb(96, 165, 250)"
-                strokeWidth="2"
-                fill="none"
+              <path 
+                d={`M10 0 
+                    Q15 ${lineHeight * 0.25} 5 ${lineHeight * 0.5} 
+                    Q-5 ${lineHeight * 0.75} 10 ${lineHeight}`}
+                fill="none" 
+                stroke="#3B82F6" 
+                strokeWidth="4"
                 strokeLinecap="round"
+                className="animate-draw"
               />
             </svg>
           </div>
+
           <div ref={timelineRef} className="relative space-y-32">
             {timelineData.map((item, index) => (
               <div

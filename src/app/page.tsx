@@ -7,36 +7,48 @@ import { Montserrat as montserratFont } from 'next/font/google';  // Import dire
 // Initialize the font
 const montserrat = montserratFont({ subsets: ['latin'] });
 
-export default function Home() {
+function calculateAge(birthdate: Date) {
+  const today = new Date();
+  let age = today.getFullYear() - birthdate.getFullYear();
+  const m = today.getMonth() - birthdate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthdate.getDate())) {
+    age--;
+  }
+  return age;
+}
 
+export default function Home() {
+  const [age, setAge] = useState<number>(0);
+  const birthdate = new Date('2010-04-06'); // Replace with your birthdate
+
+  useEffect(() => {
+    setAge(calculateAge(birthdate));
+  }, []);
 
   const links = [
     { 
       href: "/", 
       title: "Coding", 
-      desc: "Exploring the art of programming and software development",
+      desc: "Exploring the art of programming and software development, creating ",
       icon: "bi-code-square"
     },
     { 
       href: "/", 
       title: "Technology", 
-      desc: "Learning about Big Tech, Apple, and more",
+      desc: "Learning about Apple, Microsoft, and others. Exploring hardware and software technology.",
       icon: "bi-apple"
     },
     { 
       href: "/", 
-      title: "Placeholder", 
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
-      icon: "bi-lightbulb"
+      title: "Networking", 
+      desc: "Understanding computer networks, protocols, infrastructure design and more",
+      icon: "bi-router"
     }
   ];
-
-
 
   return (
     <div className="min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden">
       <BackgroundIcons />
-
 
       <div className={` relative z-10 '
       }`}>
@@ -47,19 +59,15 @@ export default function Home() {
               Hello! I'm Adon Omeri
             </h1>
             <p className="text-xl md:text-2xl text-gray-400">
-              Full-stack developer passionate about creating elegant solutions and meaningful digital experiences.
+              A {age} year old full-stack developer and tech lover passionate about creating elegant solutions and meaningful digital experiences.
             </p>
           </div>
           {/* Quick Links Grid */}
           
           
-                <h2 className={`text-2xl font-bold text-blue-400 mb-4  card-hover${montserrat.className}`}>
-                  Name
-                </h2>
+               
 
-                <p className="text-gray-300 text-2xl">
-                  age
-                </p>
+                
 
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
