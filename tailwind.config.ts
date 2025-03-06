@@ -21,18 +21,7 @@ const config: Config = {
     },
   },
   future: {
-    hoverOnlyWhenSupported: true, // Reduces unnecessary hover styles on mobile
-  },
-  purge: {
-    enabled: process.env.NODE_ENV === 'production',
-    content: [
-      './src/app/**/*.{js,ts,jsx,tsx}',
-      './src/pages/**/*.{js,ts,jsx,tsx}',
-      './src/components/**/*.{js,ts,jsx,tsx}',
-    ],
-    options: {
-      safelist: [], // Add any classes that might be dynamically created
-    },
+    hoverOnlyWhenSupported: true,
   },
   plugins: [
     require('@tailwindcss/typography'),
