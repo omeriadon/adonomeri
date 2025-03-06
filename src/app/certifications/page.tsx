@@ -13,7 +13,7 @@ const montserrat = Montserrat({
 
 export default function Certifications() {
   return (
-    <div className={`min-h-screen pt-32 px-4 max-w-6xl pb-8 mx-auto relative overflow-hidden ${montserrat.variable}`}>
+    <div className={`min-h-screen pt-32 px-8 max-w-6xl pb-8 mx-auto relative overflow-hidden ${montserrat.variable}`}>
       <BackgroundIcons />
       <div className="relative z-10">
         <PageTitle 
@@ -26,11 +26,15 @@ export default function Certifications() {
           {certifications.map((cert) => (
             <CertificationCard
               key={cert.id}
-              {...cert}
+              name={cert.name}
+              provider={cert.provider}
+              date={cert.date}
+              image={cert.image}
+              link={cert.link}
             />
           ))}
         </div>
       </div>
     </div>
   );
-} 
+}

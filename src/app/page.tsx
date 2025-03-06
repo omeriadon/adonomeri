@@ -1,11 +1,18 @@
 "use client";
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import BackgroundIcons from './components/BackgroundIcons';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import { Montserrat as montserratFont } from 'next/font/google';  // Import directly from next/font/google
 
 // Initialize the font
 const montserrat = montserratFont({ subsets: ['latin'] });
+
+// Dynamically import heavy components
+const BackgroundIcons = dynamic(() => import('./components/BackgroundIcons'), {
+  ssr: false,
+  loading: () => <div className="animate-pulse bg-gray-800 h-full w-full" />
+});
 
 function calculateAge(birthdate: Date) {
   const today = new Date();
@@ -48,47 +55,50 @@ export default function Home() {
 
   return (
     <div className="min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden">
-      <BackgroundIcons />
-
-      <div className={` relative z-10 '
-      }`}>
-        <div className="max-w-7xl mx-auto space-y-16">
-          {/* Hero Section */}
-          <div className={`space-y-8 `}>
-            <h1 className={`text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent  ${montserrat.className}`}>
-              Hello! I'm Adon Omeri
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-400">
-              A {age} year old full-stack developer and tech lover passionate about creating elegant solutions and meaningful digital experiences.
-            </p>
-          </div>
-          {/* Quick Links Grid */}
-          
-          
-               
-
-                
-
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {links.map((link, index) => (
-              <Link 
-                href={link.href} 
-                key={index}
-                className="card-hover"
-              >
-                <i className={`${link.icon} text-blue-400 text-3xl mb-6 block`}></i>
-                <h2 className={`text-2xl font-bold text-blue-400 mb-4 ${montserrat.className}`}>
-                  {link.title}
-                </h2>
-                <p className="text-gray-300 text-2xl">
-                  {link.desc}
+      <Suspense fallback={<div className="animate-pulse bg-gray-800 h-screen" />}>
+        <BackgroundIcons />
+        <div className="min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden">
+          <div className={` relative z-10 '
+          }`}>
+            <div className="max-w-7xl mx-auto space-y-16">
+              {/* Hero Section */}
+                <div className={`space-y-8`}>
+                <h1 className={`text-5xl lg:text-7xl font-bold bg-gradient-to-r from-blue-300 to-blue-900 bg-clip-text text-transparent ${montserrat.className}`}>
+                  Hello! I'm Adon Omeri
+                </h1>
+                <p className="text-xl md:text-2xl text-gray-400">
+                  A {age} year old full-stack developer and tech lover passionate about creating elegant solutions and meaningful digital experiences.
                 </p>
-              </Link>
-            ))}
+                </div>
+              {/* Quick Links Grid */}
+              
+              
+                   
+
+                  
+
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {links.map((link, index) => (
+                  <Link 
+                    href={link.href} 
+                    key={index}
+                    className="card-hover"
+                  >
+                    <i className={`${link.icon} text-blue-400 text-3xl mb-6 block`}></i>
+                    <h2 className={`text-2xl font-bold text-blue-400 mb-4 ${montserrat.className}`}>
+                      {link.title}
+                    </h2>
+                    <p className="text-gray-300 text-2xl">
+                      {link.desc}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </Suspense>
     </div>
   );
 }

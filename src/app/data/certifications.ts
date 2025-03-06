@@ -7,7 +7,6 @@ interface Certification {
   date: string;
   image: string;
   link: string;
-  imageRadius?: string; // Optional corner radius override
 }
 
 export const certifications: Certification[] = [

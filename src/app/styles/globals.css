@@ -2,12 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Extract common styles into reusable classes */
+@layer components {
+  .card-hover {
+    @apply bg-blue-500/10 backdrop-blur-sm rounded-xl p-8 border border-blue-400/20
+           shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300 
+           hover:bg-blue-500/20 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(59,130,246,0.3)];
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent;
+  }
+  
+  .card {
+    @apply bg-blue-500/10 backdrop-blur-sm rounded-xl p-8 border border-blue-400/20
+           shadow-[0_0_15px_rgba(59,130,246,0.2)];
+  }
+  
+
+}
+
+/* Optimize animations */
+@layer utilities {
+  .animate-optimized {
+    @apply will-change-transform;
+    backface-visibility: hidden;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease forwards;
+  }
+  
+  .optimize-visibility {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px; /* Approximate height */
+  }
+}
+
 body {
   background: rgb(17, 24, 39);
   color: rgb(229, 231, 235);
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 10px;
 }
 
@@ -22,44 +59,10 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(107, 114, 128);
-}
-
-.wiggle-animation {
-  animation: wiggle 3s ease-in-out infinite;
-}
-
-@keyframes wiggle {
-  0% {
-    d: path("M10,0 Q15,25 5,50 Q-5,75 10,100");
-  }
-  50% {
-    d: path("M10,0 Q5,25 15,50 Q25,75 10,100");
-  }
-  100% {
-    d: path("M10,0 Q15,25 5,50 Q-5,75 10,100");
-  }
-}
-
-@keyframes border-flow {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+} */
 
 .animate-border-flow {
   animation: border-flow 5s linear infinite;
-}
-
-@keyframes gradient-rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 .animate-gradient-rotate {
@@ -67,18 +70,44 @@ body {
   background-size: 200% 200%;
 }
 
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.card-title {
-  font-family: var(--font-montserrat);
+/* Define any other keyframes you need */
+@keyframes border-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.card-hover {
-  @apply bg-blue-500/10 backdrop-blur-sm rounded-xl p-8 border border-blue-400/20
-         shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300 
-         hover:bg-blue-500/20 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(59,130,246,0.3)];
+@keyframes gradient-rotate {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* Simple page enter animation */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-page-enter {
+  animation: pageEnter 0.5s ease forwards;
 }
 

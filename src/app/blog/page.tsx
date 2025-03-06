@@ -30,19 +30,10 @@ const mockPosts: BlogPost[] = [
 export default function BlogPage() {
   const [posts, setPosts] = useState<BlogPost[]>(mockPosts);
 
-  // useEffect(() => {
 
-  //   // You can fetch posts here if needed
-  //   // const fetchPosts = async () => {
-  //   //   const response = await fetch('/api/posts');
-  //   //   const data = await response.json();
-  //   //   setPosts(data);
-  //   // };
-  //   // fetchPosts();
-  // }, []);
 
   return (
-    <div className={`min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden ${montserrat.className}`}>
+    <div className={`min-h-screen pt-32 px-8 max-w-6xl mx-auto relative overflow-hidden ${montserrat.className}`}>
       <BackgroundIcons />
       <div className={` relative z-10 '
       }`}>

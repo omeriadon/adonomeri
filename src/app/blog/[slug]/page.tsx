@@ -9,6 +9,8 @@ import { formatDate } from '@/utils/formatDate';
 import '../../styles/markdownStyles.css';
 import BackgroundIcons from '../../components/BackgroundIcons';
 import { Montserrat } from 'next/font/google';
+import Link from 'next/link';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 type BlogParams = Promise<{ slug: string }>;
 
@@ -36,7 +38,19 @@ export default async function BlogPost(props: { params: BlogParams }) {
     const htmlContent = marked(content);
 
     return (
-      <div className="markdown max-w-4xl mx-auto pt-32 px-4 relative overflow-hidden">
+      <div className='relative min-h-screen'>
+        <Link 
+          href="/blog" 
+          className="fixed card-hover font-4xl  w-16 h-16  flex items-center justify-center"
+          aria-label="Back to blogs"
+        >
+          <div className='font-bold text-2xl'>      
+            <i className="bi bi-chevron-left"></i>
+          </div>
+        </Link>
+
+      <div className="markdown max-w-4xl pb-32 mx-auto mt-32 px-4 relative overflow-hidden card">
+
         <BackgroundIcons />
         <div className="relative z-10">
           <h1 className={`text-4xl font-bold text-blue-400 mb-4 ${montserrat.className}`}>
@@ -57,6 +71,7 @@ export default async function BlogPost(props: { params: BlogParams }) {
           </div>
           <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
         </div>
+      </div>
       </div>
     );
   } catch (error) {

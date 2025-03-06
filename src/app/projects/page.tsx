@@ -18,9 +18,21 @@ const projectsData = [
     link: "/"
   },
   {
-    title: "Add apple app here",
-    description: "A collaborative task management tool with real-time updates",
-    technologies: ["React", "Firebase", "Material UI", "Redux"],
+    title: "Apple Directory",
+    description: "A still in progress Apple device catalogue",
+    technologies: ["Swift", "SwiftUI"],
+    link: ""
+  },
+  {
+    title: "LabelMaker",
+    description: "Basic grapphic card generator",
+    technologies: ["Swift", "SwiftUI"],
+    link: ""
+  },
+  {
+    title: "Scholar Suite",
+    description: "In progress website for students to manage their school work etc.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
     link: ""
   },
 ];
@@ -52,7 +64,7 @@ export default function Projects() {
   const cardClassName = "card-hover block";
 
   return (
-    <div className={`min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden ${montserrat.variable}`}>
+    <div className={`min-h-screen pt-32 px-8 max-w-6xl mx-auto relative overflow-hidden ${montserrat.variable}`}>
       <BackgroundIcons />
       <div className={`relative z-10 '
       }`}>
@@ -62,7 +74,7 @@ export default function Projects() {
             description="Here are some of the projects I've worked on. Each project represents a unique challenge and learning experience."
             icon="bi bi-code-square"
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 grid-cols-2 gap-10">
             {projectsData.map((project, index) => (
               project.link ? (
                 <a

@@ -21,6 +21,17 @@ const timelineData = [
       "Developed first website",
     ]
   },
+  {
+    year: "2025",
+    title: "Networking",
+    institution: "Cisco Networking Academy",
+    description: "Studied various networking, cybersecurity, data science, and other concepts.",
+    achievements: [
+      "Finished Cisco Networking Academy's Network Technician course",
+      // "Completed TAFE's Certificate IV in Networking",
+    ]
+  },
+  // You might want to add more timeline items here
 ];
 
 export default function History() {
@@ -41,7 +52,7 @@ export default function History() {
   }, []);
 
   return (
-    <div className={`min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden ${montserrat.variable}`}>
+    <div className={`min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden pb-8 ${montserrat.variable}`}>
       <BackgroundIcons />
       <div className="transition-all duration-1000 relative z-10">
         <div className="max-w-7xl mx-auto relative">
@@ -50,40 +61,39 @@ export default function History() {
             description="Explore my educational background and professional development milestones."
             icon="bi bi-clock-history"
           />
+          
+
+          
+          {/* Desktop vertical line (center aligned) */}
           <div 
-            className="absolute left-1/2 -translate-x-1/2 top-80 w-4"
+            className="hidden md:block absolute left-1/2 -translate-x-1/2 mt-16 w-1 bg-gray-700"
             style={{ height: `${lineHeight}px` }}
           >
-            <svg 
-              className="w-full h-full"
-              viewBox={`0 0 20 ${lineHeight}`}
-              preserveAspectRatio="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path 
-                d={`M10 0 
-                    Q15 ${lineHeight * 0.25} 5 ${lineHeight * 0.5} 
-                    Q-5 ${lineHeight * 0.75} 10 ${lineHeight}`}
-                fill="none" 
-                stroke="#3B82F6" 
-                strokeWidth="4"
-                strokeLinecap="round"
-                className="animate-draw"
-              />
-            </svg>
           </div>
 
-          <div ref={timelineRef} className="relative space-y-32">
+          <div ref={timelineRef} className="relative pt-8 px-4">
             {timelineData.map((item, index) => (
               <div
                 key={index}
-                className={`relative flex ${
-                  index % 2 === 0 ? 'justify-start' : 'justify-end'
-                } items-center`}
+                className="relative"
+                style={{
+                  marginTop: index > 0 ? '50px' : '0',
+                }}
               >
-                <div className={`w-[calc(50%-3rem)] ${
-                  index % 2 === 0 ? 'mr-auto' : 'ml-auto'
-                } card-hover`}>
+                {/* Mobile timeline dot (left aligned) */}
+                <div className="md:hidden absolute left-8 -translate-x-1/2 h-8 w-8 ml-1 mt-8 rounded-full bg-blue-500  z-30"></div>
+                
+                {/* Desktop timeline dot (center aligned) */}
+                <div className="hidden md:block absolute left-1/2 -translate-x-1/2 h-10 w-10 mt-8 rounded-full bg-blue-500  z-30"></div>
+                
+                <div className={`relative flex ${
+                  index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'
+                } justify-start items-center`}>
+                  <div className={`
+                  w-full pl-16 pr-4 md:w-[calc(50%-3rem)]
+                  ${index % 2 === 0 ? 'md:mr-auto md:pr-8 md:pl-8' : 'md:ml-auto md:pl-8 md:pr-8'}
+                  card-hover
+                  `}>
                   <span className="text-blue-400 font-mono text-lg">{item.year}</span>
                   <h3 className="text-xl font-bold text-blue-400 mb-2 font-montserrat">
                     {item.title}
@@ -92,12 +102,13 @@ export default function History() {
                   <p className="mt-8 text-lg text-gray-300">{item.description}</p>
                   <ul className="mt-8 space-y-4">
                     {item.achievements.map((achievement, i) => (
-                      <li key={i} className="flex items-center text-gray-300 text-lg">
-                        <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                        {achievement}
-                      </li>
+                    <li key={i} className="flex items-center text-gray-300 text-lg">
+                      <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 flex-shrink-0"></span>
+                      <span className="flex-1">{achievement}</span>
+                    </li>
                     ))}
                   </ul>
+                  </div>
                 </div>
               </div>
             ))}
