@@ -9,29 +9,29 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@vercel/analytics": "^1.4.1",
-    "@vercel/speed-insights": "^1.1.0",
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
     "bootstrap-icons": "^1.11.3",
     "framer-motion": "^12.4.10",
     "gray-matter": "^4.0.3",
-    "highlight.js": "^11.10.0",
-    "marked": "^15.0.2",
+    "highlight.js": "^11.11.1",
+    "marked": "^15.0.7",
     "next": "^15.2.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "zustand": "^5.0.1"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.15",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/marked": "^5.0.2",
-    "@types/node": "20.17.17",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/node": "^22.13.9",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
     "autoprefixer": "^10.4.20",
-    "eslint": "^8",
-    "eslint-config-next": "15.0.3",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.15",
-    "typescript": "^5"
+    "eslint": "^9.21.0",
+    "eslint-config-next": "^15.2.1",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.11",
+    "typescript": "^5.8.2"
   }
 }
