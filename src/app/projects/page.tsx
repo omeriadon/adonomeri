@@ -19,21 +19,15 @@ const projectsData = [
   },
   {
     title: "Apple Directory",
-    description: "A still in progress Apple device catalogue",
+    description: "An in-progress Apple device catalogue",
     technologies: ["Swift", "SwiftUI"],
     link: ""
   },
   {
-    title: "LabelMaker",
-    description: "Basic grapphic card generator",
-    technologies: ["Swift", "SwiftUI"],
-    link: ""
-  },
-  {
-    title: "Scholar Suite",
-    description: "In progress website for students to manage their school work etc.",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-    link: ""
+    title: "MultiClip",
+    description: "A simple lightweight text snippet manager",
+    technologies: ["Swift", "SwiftUI", "SwiftData"],
+    link: "https://github.com/omeriadon/MultiClip"
   },
 ];
 
