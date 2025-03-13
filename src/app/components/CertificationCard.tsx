@@ -22,7 +22,7 @@ export default function CertificationCard({
 }: CertificationCardProps) {
   return (
     <Link href={link} target="_blank" rel="noopener noreferrer">
-      <div className="card-hover">
+      <div className="card-hover cursor-help">
         <div className="relative w-full aspect-[4/3] mb-4 overflow-hidden transition-all duration-300">
           <Image
             src={image}

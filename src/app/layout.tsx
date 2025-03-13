@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`dark ${montserrat.className}`}>
+    <html lang="en" className={`dark select-none ${montserrat.className}`}>
       <body className="min-h-screen bg-gray-900 text-gray-100">
         <Navbar />
         <PageTransition>

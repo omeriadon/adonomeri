@@ -12,6 +12,16 @@ const montserrat = Montserrat({
 
 const timelineData = [
   {
+    year: "2015-2021",
+    title: "Library Monitor",
+    institution: "Rostrata Primary School",
+    description: "Completed primary school education, and volunteered as a library assistant.",
+    achievements: [
+      "Participated in various school events",
+      "Developed a passion for technology",
+    ]
+    },
+  {
     year: "2022-2027",
     title: "High School",
     institution: "Perth Modern School",
