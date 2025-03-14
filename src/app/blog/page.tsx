@@ -44,6 +44,9 @@ export default function BlogPage() {
   return (
     <div className={`min-h-screen pt-32 px-8 max-w-6xl mx-auto relative overflow-hidden ${montserrat.className}`}>
       <BackgroundIcons />
+      
+      {/* Removing the back button from this page */}
+      
       <div className="relative z-10">
         <PageTitle 
           title="Blog"

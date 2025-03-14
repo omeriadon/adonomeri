@@ -41,7 +41,7 @@ export default async function BlogPost(props: { params: BlogParams }) {
       <div className='relative min-h-screen'>
         <Link 
           href="/blog" 
-          className="fixed card-hover font-4xl  w-16 h-16  flex items-center justify-center"
+          className="fixed left-4 md:left-8 top-20 md:top-24 z-30 card-hover w-16 h-16 flex items-center justify-center"
           aria-label="Back to blogs"
         >
           <div className='font-bold text-2xl'>      
@@ -49,29 +49,29 @@ export default async function BlogPost(props: { params: BlogParams }) {
           </div>
         </Link>
 
-      <div className="markdown max-w-4xl pb-32 mx-auto mt-32 px-4 relative overflow-hidden card">
+        <div className="markdown max-w-4xl pb-32 mx-auto mt-32 px-4 relative overflow-hidden card">
 
-        <BackgroundIcons />
-        <div className="relative z-10">
-          <h1 className={`text-4xl font-bold text-blue-400 mb-4 ${montserrat.className}`}>
-            {data.title}
-          </h1>
-          <div className="flex flex-wrap items-center gap-2 mb-8">
-            <span className="px-3 py-1 bg-gray-700/50 text-gray-300 rounded-full text-sm">
-              {formatDate(data.date)}
-            </span>
-            {data.tags.map((tag: string) => (
-              <span
-                key={tag}
-                className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm"
-              >
-                {tag}
+          <BackgroundIcons />
+          <div className="relative z-10">
+            <h1 className={`text-4xl font-bold text-blue-400 mb-4 ${montserrat.className}`}>
+              {data.title}
+            </h1>
+            <div className="flex flex-wrap items-center gap-2 mb-8">
+              <span className="px-3 py-1 bg-gray-700/50 text-gray-300 rounded-full text-sm">
+                {formatDate(data.date)}
               </span>
-            ))}
+              {data.tags.map((tag: string) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
           </div>
-          <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
         </div>
-      </div>
       </div>
     );
   } catch (error) {
