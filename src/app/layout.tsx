@@ -28,6 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`dark select-none ${montserrat.className}`}>
+      <meta name="google-site-verification" content="ZQc5lUuhUy6f3lNRpn6l6JwLt63FsttMZGe3swZBLT8" />
       <body className="min-h-screen bg-gray-900 text-gray-100">
         <Navbar />
         <PageTransition>
