@@ -1,6 +1,6 @@
 ---
 title: First Blog Post
-date: '2024-03-22'
+date: '2024-02-22'
 tags: ['next.js', 'react', 'web-development']
 ---
 
