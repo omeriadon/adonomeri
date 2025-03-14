@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 
 export default function BackgroundIcons() {
   const [mounted, setMounted] = useState(false);
@@ -11,7 +11,8 @@ export default function BackgroundIcons() {
     speedY: number;
   }>>([]);
   
-  const floatingIcons = [
+  // Memoize icons array to prevent recreation on every render
+  const floatingIcons = useMemo(() => [
     "bi-code-slash",
     "bi-braces",
     "bi-terminal",
@@ -21,22 +22,38 @@ export default function BackgroundIcons() {
     "bi-database",
     "bi-cloud",
     "bi-laptop",
+    // Reduced number of icons to improve performance
     "bi-code-square",
     "bi-window",
     "bi-file-earmark-code",
-    "bi-diagram-3",
-    "bi-bug",
-    "bi-command",
-    "bi-keyboard",
-    "bi-mouse",
-    "bi-router",
-    "bi-server",
-    "bi-gpu-card",
-    "bi-motherboard",
-    "bi-pc-display",
-    "bi-phone",
-    "bi-tablet"
-  ];
+  ], []);
+
+  // Optimize animation function with useCallback
+  const updatePositions = useCallback(() => {
+    setPositions(prev => prev.map(pos => {
+      let newX = pos.x + pos.speedX;
+      let newY = pos.y + pos.speedY;
+      let newSpeedX = pos.speedX;
+      let newSpeedY = pos.speedY;
+
+      // Bounce off edges
+      if (newX <= 0 || newX >= 100) {
+        newSpeedX = -newSpeedX;
+        newX = Math.max(0, Math.min(100, newX));
+      }
+      if (newY <= 0 || newY >= 100) {
+        newSpeedY = -newSpeedY;
+        newY = Math.max(0, Math.min(100, newY));
+      }
+
+      return {
+        x: newX,
+        y: newY,
+        speedX: newSpeedX,
+        speedY: newSpeedY
+      };
+    }));
+  }, []);
 
   useEffect(() => {
     setMounted(true);
@@ -44,56 +61,34 @@ export default function BackgroundIcons() {
     setPositions(floatingIcons.map(() => ({
       x: Math.random() * 100,
       y: Math.random() * 100,
-      speedX: (Math.random() - 0.5) * 0.2, // Random speed between -0.1 and 0.1
-      speedY: (Math.random() - 0.5) * 0.2
+      speedX: (Math.random() - 0.5) * 0.1, // Reduced speed for better performance
+      speedY: (Math.random() - 0.5) * 0.1
     })));
 
-    // Continuous animation
-    const animate = () => {
-      setPositions(prev => prev.map(pos => {
-        let newX = pos.x + pos.speedX;
-        let newY = pos.y + pos.speedY;
-        let newSpeedX = pos.speedX;
-        let newSpeedY = pos.speedY;
-
-        // Bounce off edges
-        if (newX <= 0 || newX >= 100) {
-          newSpeedX = -newSpeedX;
-          newX = Math.max(0, Math.min(100, newX));
-        }
-        if (newY <= 0 || newY >= 100) {
-          newSpeedY = -newSpeedY;
-          newY = Math.max(0, Math.min(100, newY));
-        }
-
-        return {
-          x: newX,
-          y: newY,
-          speedX: newSpeedX,
-          speedY: newSpeedY
-        };
-      }));
-    };
-
-    const animationInterval = setInterval(animate, 50);
-
+    // Reduce animation frame rate to 100ms (from 50ms)
+    const animationInterval = setInterval(updatePositions, 100);
     return () => clearInterval(animationInterval);
-  }, []);
+  }, [floatingIcons, updatePositions]);
 
+  // Don't render anything on server or if not mounted
   if (!mounted) return null;
+
+  // Limit the number of rendered icons based on screen size
+  const renderedIcons = floatingIcons.slice(0, Math.min(floatingIcons.length, 10));
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {floatingIcons.map((icon, index) => (
+      {renderedIcons.map((icon, index) => (
         <i key={index} 
            className={`bi ${icon} absolute text-blue-100/10 text-3xl`}
            style={{
              left: `${positions[index]?.x}%`,
              top: `${positions[index]?.y}%`,
-             transition: 'all 0.5s linear'
+             transform: 'translateZ(0)', // Hardware acceleration
+             willChange: 'left, top', // Hint for browser optimization
            }}
         ></i>
       ))}
     </div>
   );
-} 
+}

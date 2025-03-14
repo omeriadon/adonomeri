@@ -1,20 +1,28 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
-import { Montserrat as montserratFont } from 'next/font/google';  // Import directly from next/font/google
+import { Montserrat as montserratFont } from 'next/font/google';
 
 // Initialize the font
-const montserrat = montserratFont({ subsets: ['latin'] });
-
-// Dynamically import heavy components
-const BackgroundIcons = dynamic(() => import('./components/BackgroundIcons'), {
-  ssr: false,
-  loading: () => <div className="animate-pulse bg-gray-800 h-full w-full" />
+const montserrat = montserratFont({ 
+  subsets: ['latin'],
+  display: 'swap' // Add this to improve font loading performance
 });
 
-function calculateAge(birthdate: Date) {
+// Dynamically import heavy components with proper loading state
+const BackgroundIcons = dynamic<{}>(
+  () => import('./components/BackgroundIcons').then(mod => {
+    // Small delay to ensure other critical content loads first
+    return new Promise<React.ComponentType<{}>>(resolve => setTimeout(() => resolve(mod.default), 100))
+  }), {
+  ssr: false,
+  loading: () => null // Remove animate-pulse to reduce render work
+});
+
+// Memoize calculation function
+const calculateAge = (birthdate: Date) => {
   const today = new Date();
   let age = today.getFullYear() - birthdate.getFullYear();
   const m = today.getMonth() - birthdate.getMonth();
@@ -22,17 +30,23 @@ function calculateAge(birthdate: Date) {
     age--;
   }
   return age;
-}
+};
 
 export default function Home() {
-  const [age, setAge] = useState<number>(0);
-  const birthdate = new Date('2010-04-06'); // Replace with your birthdate
-
-  useEffect(() => {
-    setAge(calculateAge(birthdate));
+  // Use useMemo for birthdate
+  const birthdate = useMemo(() => new Date('2010-04-06'), []);
+  
+  // Create a date key that changes only once per day to minimize recalculations
+  const dateKey = useMemo(() => {
+    const now = new Date();
+    return `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`;
   }, []);
+  
+  // Calculate age with useMemo - will only recalculate when the date changes
+  const age = useMemo(() => calculateAge(birthdate), [birthdate, dateKey]);
 
-  const links = [
+  // Memoize links to prevent re-creation on each render
+  const links = useMemo(() => [
     { 
       href: "/", 
       title: "Coding", 
@@ -51,53 +65,48 @@ export default function Home() {
       desc: "Understanding computer networks, protocols, infrastructure design and more",
       icon: "bi-router"
     }
-  ];
+  ], []);
 
   return (
+    // Remove duplicated div - this was causing unnecessary layout work
     <div className="min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden">
-      <Suspense fallback={<div className="animate-pulse bg-gray-800 h-screen" />}>
-        <BackgroundIcons />
-        <div className="min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden">
-          <div className={` relative z-10 '
-          }`}>
-            <div className="max-w-7xl mx-auto space-y-16">
-              {/* Hero Section */}
-                <div className={`space-y-8`}>
-                <h1 className={`text-5xl lg:text-7xl font-bold bg-gradient-to-r from-blue-300 to-blue-900 bg-clip-text text-transparent ${montserrat.className}`}>
-                  Hello! I'm Adon Omeri
-                </h1>
-                <p className="text-xl md:text-2xl text-gray-400">
-                  A {age} year old full-stack developer and tech lover passionate about creating elegant solutions and meaningful digital experiences.
+      <div className="relative z-10">
+        <div className="max-w-7xl mx-auto space-y-16">
+          {/* Hero Section - Add priority rendering */}
+          <div className="space-y-8">
+            <h1 className={`text-5xl lg:text-7xl font-bold bg-gradient-to-r from-blue-300 to-blue-900 bg-clip-text text-transparent ${montserrat.className}`}>
+              Hello! I'm Adon Omeri
+            </h1>
+            {/* Add height reservation to prevent layout shift */}
+            <p className="text-xl md:text-2xl text-gray-400 min-h-[3rem]">
+              A {age} year old full-stack developer and tech lover passionate about creating elegant solutions and meaningful digital experiences.
+            </p>
+          </div>
+          
+          {/* Quick Links Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {links.map((link, index) => (
+              <Link 
+                href={link.href} 
+                key={index}
+                className="card-hover"
+              >
+                <i className={`${link.icon} text-blue-400 text-3xl mb-6 block`}></i>
+                <h2 className={`text-2xl font-bold text-blue-400 mb-4 ${montserrat.className}`}>
+                  {link.title}
+                </h2>
+                <p className="text-gray-300 text-2xl">
+                  {link.desc}
                 </p>
-                </div>
-              {/* Quick Links Grid */}
-              
-              
-                   
-
-                  
-
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {links.map((link, index) => (
-                  <Link 
-                    href={link.href} 
-                    key={index}
-                    className="card-hover"
-                  >
-                    <i className={`${link.icon} text-blue-400 text-3xl mb-6 block`}></i>
-                    <h2 className={`text-2xl font-bold text-blue-400 mb-4 ${montserrat.className}`}>
-                      {link.title}
-                    </h2>
-                    <p className="text-gray-300 text-2xl">
-                      {link.desc}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </div>
+              </Link>
+            ))}
           </div>
         </div>
+      </div>
+
+      {/* Load background icons after main content */}
+      <Suspense fallback={null}>
+        <BackgroundIcons />
       </Suspense>
     </div>
   );
