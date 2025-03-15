@@ -32,6 +32,7 @@ const contactMethods = [
   },
 ];
 
+
 export default function Contact() {
  
 
