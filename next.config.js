@@ -1,10 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true, // Good to keep for catching bugs
+  reactStrictMode: true,
+  
+  // Configure PostCSS optimizations
   experimental: {
-    // optimizeCss: true, // Already in use, works fine
-    optimizePackageImports: ['react-icons', 'framer-motion', 'bootstrap-icons'], // Speeds up imports
-  },
-};
+    // Optimize CSS modules
+    optimizeCss: true,
+    // Faster script loading
+    optimizePackageImports: ['react-icons', 'framer-motion', 'bootstrap-icons']
+  }
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
