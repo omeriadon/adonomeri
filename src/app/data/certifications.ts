@@ -36,6 +36,14 @@ export const certifications: Certification[] = [
     link: 'https://www.credly.com/badges/44365338-de4f-421e-867f-7438a27b81c4/public_url'
   },
   {
+    id: 'Network-Addressing-Basic-Troubleshooting',
+    name: 'Network Addressing and Basic Troubleshooting',
+    provider: 'Cisco Networking Academy',
+    date: '2024-03-15',
+    image: '/images/certifications/Network-Addressing-Basic-Troubleshooting.png',
+    link: 'https://www.credly.com/badges/3e00751c-24ee-4602-a5d5-3719f94c550a/public_url'
+  },
+  {
     id: 'Intro-to-Cybersecurity',
     name: 'Introduction to Cybersecurity',
     provider: 'Cisco Networking Academy',

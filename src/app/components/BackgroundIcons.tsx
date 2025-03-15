@@ -22,10 +22,18 @@ export default function BackgroundIcons() {
     "bi-database",
     "bi-cloud",
     "bi-laptop",
-    // Reduced number of icons to improve performance
     "bi-code-square",
     "bi-window",
     "bi-file-earmark-code",
+    // Additional technology-related icons
+    "bi-hdd",
+    "bi-display",
+    "bi-server",
+    "bi-wifi",
+    "bi-memory",
+    "bi-motherboard",
+    "bi-keyboard",
+    "bi-diagram-3"
   ], []);
 
   // Optimize animation function with useCallback
@@ -61,12 +69,12 @@ export default function BackgroundIcons() {
     setPositions(floatingIcons.map(() => ({
       x: Math.random() * 100,
       y: Math.random() * 100,
-      speedX: (Math.random() - 0.5) * 0.1, // Reduced speed for better performance
-      speedY: (Math.random() - 0.5) * 0.1
+      speedX: (Math.random() - 0.3) * 0.3, // Reduced speed for better performance
+      speedY: (Math.random() - 0.3) * 0.3
     })));
 
-    // Reduce animation frame rate to 100ms (from 50ms)
-    const animationInterval = setInterval(updatePositions, 100);
+    // Increase animation frame rate to 30ms for smoother motion
+    const animationInterval = setInterval(updatePositions, 30);
     return () => clearInterval(animationInterval);
   }, [floatingIcons, updatePositions]);
 

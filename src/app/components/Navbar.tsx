@@ -15,8 +15,8 @@ export default function Navbar() {
     { href: "/skills", label: "Skills", icon: "bi bi-tools" },
     { href: "/journey", label: "Journey", icon: "bi bi-clock-history" },
     { href: "/blog", label: "Blog", icon: "bi bi-journal-text" },
-    { href: "/contact", label: "Contact", icon: "bi bi-envelope" },
     { href: "/certifications", label: "Certifications", icon: "bi bi-award" },
+    { href: "/contact", label: "Contact", icon: "bi bi-envelope" },
   ];
 
   // Create reusable class strings to reduce duplication and CSS size
