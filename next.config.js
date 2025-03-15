@@ -1,12 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Enable optimizations
-  swcMinify: true,
   
-  // Optimize font loading
-  optimizeFonts: true,
-
   // Configure PostCSS optimizations
   experimental: {
     // Optimize CSS modules
