@@ -4,6 +4,7 @@ const nextConfig = {
   experimental: {
     // optimizeCss: true, // Already in use, works fine
     optimizePackageImports: ['react-icons', 'framer-motion', 'bootstrap-icons'], // Speeds up imports
+    appDir: true, // Set which directory structure to use
   },
 };
 
