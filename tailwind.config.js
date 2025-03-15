@@ -7,26 +7,13 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // Keep your theme extensions
+      // Add your theme extensions here if you have any
     },
   },
   plugins: [],
-  // Enable JIT mode for smaller CSS bundles
-  mode: 'jit',
-  // Purge unused CSS
-  purge: {
-    enabled: process.env.NODE_ENV === 'production',
-    content: [
-      './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-      './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-      './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    ],
-    options: {
-      safelist: [
-        // Add classes that are dynamically created and shouldn't be purged
-        /^bg-/,
-        /^text-/,
-      ],
-    },
-  },
-}
+  mode: 'jit', // Optional since it’s default in v3+, but fine to keep
+  safelist: [
+    { pattern: /^bg-/ }, // Fixed regex syntax
+    { pattern: /^text-/ },
+  ],
+};
