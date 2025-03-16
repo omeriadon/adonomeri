@@ -111,3 +111,61 @@ body {
   animation: pageEnter 0.5s ease forwards;
 }
 
+
+
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+@font-face {
+  font-family: 'bootstrap-icons';
+  src: url('/node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2') format('woff2'),
+       url('/node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Add this to your globals.css file to disable hover effects on mobile */
+@media (hover: none) and (pointer: coarse) {
+  /* This targets touch devices like mobile phones and tablets */
+  .card-hover:hover {
+    /* Reset all hover effects */
+    transform: none !important;
+    box-shadow: none !important;
+    background: inherit !important;
+    opacity: 1 !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  
+  /* Disable any hover-specific transitions */
+  .card-hover {
+    transition: none !important;
+  }
+  
+  /* If you have any other hover classes that need to be disabled on mobile */
+  [class*="hover"]:hover {
+    /* This is a more generic selector that targets any class containing "hover" */
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* When combining CSS files, just copy the contents of both files into this one */
+/* Organize them by sections like: */
+
+/* 1. CSS Reset / Base Styles */
+/* ...existing code... */
+
+/* 2. Layout & Grid */
+/* ...existing code... */
+
+/* 3. Components */
+/* ...existing code... */
+
+/* 4. Utilities */
+/* ...existing code... */
+
+/* 5. Media Queries (including the mobile hover disable above) */
+/* ...existing code... */
+
+
+

@@ -72,9 +72,11 @@ export default function Home() {
   return (
     <div className="min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden">
       {/* Replace BackgroundIcons with TechParticlesAnimation */}
-      <Suspense fallback={null}>
+      <div className=" " >
+      <Suspense fallback={null}  >
         <TechParticlesAnimation />
       </Suspense>
+      </div>
       
       <div className="relative z-10">
         <div className="max-w-7xl mx-auto space-y-16">
@@ -89,7 +91,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8  px-4 ">
             {links.map((link, index) => (
               <Link href={link.href} key={index} className="card-hover">
                 <i className={`${link.icon} text-blue-400 text-3xl mb-6 block`}></i>
