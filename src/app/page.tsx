@@ -11,15 +11,9 @@ const montserrat = montserratFont({
   display: 'swap',
 });
 
-// Define a type for BackgroundIcons props (empty, with lint suppression)
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-interface BackgroundIconsProps {}
-
-const BackgroundIcons = dynamic<BackgroundIconsProps>(
-  () =>
-    import('./components/BackgroundIcons').then((mod) =>
-      new Promise((resolve) => setTimeout(() => resolve(mod.default), 100))
-    ),
+// Dynamically import the new animation component
+const TechParticlesAnimation = dynamic(
+  () => import('./components/TechParticlesAnimation'),
   {
     ssr: false,
     loading: () => null,
@@ -77,6 +71,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden">
+      {/* Replace BackgroundIcons with TechParticlesAnimation */}
+      <Suspense fallback={null}>
+        <TechParticlesAnimation />
+      </Suspense>
+      
       <div className="relative z-10">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="space-y-8">
@@ -103,10 +102,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      <Suspense fallback={null}>
-        <BackgroundIcons />
-      </Suspense>
     </div>
   );
 }
