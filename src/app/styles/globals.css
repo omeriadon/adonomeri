@@ -1,8 +1,20 @@
+/* 1. Imports and Framework Dependencies */
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Extract common styles into reusable classes */
+/* 2. Font Definitions */
+/* Bootstrap Icons font-face is already included in the CDN import above */
+
+/* 3. Base Styles */
+body {
+  background: rgb(17, 24, 39);
+  color: rgb(229, 231, 235);
+}
+
+/* 4. Components */
 @layer components {
   .card-hover {
     @apply bg-blue-500/10 backdrop-blur-sm rounded-xl p-8 border border-blue-400/20
@@ -18,19 +30,13 @@
     @apply bg-blue-500/10 backdrop-blur-sm rounded-xl p-8 border border-blue-400/20
            shadow-[0_0_15px_rgba(59,130,246,0.2)];
   }
-  
-
 }
 
-/* Optimize animations */
+/* 5. Utilities */
 @layer utilities {
   .animate-optimized {
     @apply will-change-transform;
     backface-visibility: hidden;
-  }
-  
-  .animate-fade-in-up {
-    animation: fadeInUp 0.5s ease forwards;
   }
   
   .optimize-visibility {
@@ -39,27 +45,14 @@
   }
 }
 
-body {
-  background: rgb(17, 24, 39);
-  color: rgb(229, 231, 235);
+/* 6. Animations */
+.animate-page-enter {
+  animation: pageEnter 0.5s ease forwards;
 }
 
-/* ::-webkit-scrollbar {
-  width: 10px;
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease forwards;
 }
-
-::-webkit-scrollbar-track {
-  background: rgb(17, 24, 39);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgb(75, 85, 99);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(107, 114, 128);
-} */
 
 .animate-border-flow {
   animation: border-flow 5s linear infinite;
@@ -70,7 +63,7 @@ body {
   background-size: 200% 200%;
 }
 
-
+/* 7. Keyframes Definitions */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -82,7 +75,17 @@ body {
   }
 }
 
-/* Define any other keyframes you need */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes border-flow {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -95,39 +98,10 @@ body {
   100% { background-position: 0% 0%; }
 }
 
-/* Simple page enter animation */
-@keyframes pageEnter {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-page-enter {
-  animation: pageEnter 0.5s ease forwards;
-}
-
-
-
-@import 'bootstrap-icons/font/bootstrap-icons.css';
-
-@font-face {
-  font-family: 'bootstrap-icons';
-  src: url('/node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2') format('woff2'),
-       url('/node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* Add this to your globals.css file to disable hover effects on mobile */
+/* 8. Media Queries */
 @media (hover: none) and (pointer: coarse) {
-  /* This targets touch devices like mobile phones and tablets */
+  /* Disable hover effects on mobile devices */
   .card-hover:hover {
-    /* Reset all hover effects */
     transform: none !important;
     box-shadow: none !important;
     background: inherit !important;
@@ -136,36 +110,16 @@ body {
     transition: none !important;
   }
   
-  /* Disable any hover-specific transitions */
   .card-hover {
     transition: none !important;
   }
   
-  /* If you have any other hover classes that need to be disabled on mobile */
+  /* Generic hover disable for all hover classes */
   [class*="hover"]:hover {
-    /* This is a more generic selector that targets any class containing "hover" */
     transform: none !important;
     transition: none !important;
   }
 }
-
-/* When combining CSS files, just copy the contents of both files into this one */
-/* Organize them by sections like: */
-
-/* 1. CSS Reset / Base Styles */
-/* ...existing code... */
-
-/* 2. Layout & Grid */
-/* ...existing code... */
-
-/* 3. Components */
-/* ...existing code... */
-
-/* 4. Utilities */
-/* ...existing code... */
-
-/* 5. Media Queries (including the mobile hover disable above) */
-/* ...existing code... */
 
 
 
