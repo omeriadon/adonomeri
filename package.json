@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "22": "^0.0.0",
+    "@types/three": "^0.174.0",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "bootstrap-icons": "^1.11.3",
@@ -22,6 +23,8 @@
     "node": "^20.19.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "three": "^0.174.0",
+    "three-orbitcontrols": "^2.110.2",
     "zustand": "^5.0.3"
   },
   "devDependencies": {

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import { Montserrat as montserratFont } from 'next/font/google';
+import ThreeDModel from './components/3DModel';
 
 // Initialize the font
 const montserrat = montserratFont({
@@ -90,6 +91,9 @@ export default function Home() {
               A {age} year old full-stack developer and tech lover passionate about creating elegant solutions and meaningful digital experiences.
             </p>
           </div>
+
+          {/* Add the 3D model component */}
+          <ThreeDModel />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8  px-4 ">
             {links.map((link, index) => (
