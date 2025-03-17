@@ -93,8 +93,9 @@ export default function Home() {
           </div>
 
           {/* Add the 3D model component */}
-          <ThreeDModel />
-
+          <div className="">
+            <ThreeDModel/>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8  px-4 ">
             {links.map((link, index) => (
               <Link href={link.href} key={index} className="card-hover">
