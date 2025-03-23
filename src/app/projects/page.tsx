@@ -29,6 +29,18 @@ const projectsData = [
     technologies: ["Swift", "SwiftUI", "SwiftData"],
     link: "https://github.com/omeriadon/MultiClip"
   },
+  {
+    title: "Element Catalogue",
+    description: "A macOS floating app for chemical elements",
+    technologies: ["Swift", "SwiftUI", "SwiftData"],
+    link: "https://github.com/omeriadon/ElementCatalogue"
+  },
+  {
+    title: "Element Catalogue",
+    description: "A simple lightweight text snippet manager",
+    technologies: ["React", "Next.js", "Image and JSON fetching"],
+    link: "https://element-catalogue.vercel.app/"
+  },
 ];
 
 const CardContent = ({ project }: { project: typeof projectsData[0] }) => (
