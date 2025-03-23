@@ -21,6 +21,47 @@ const TechParticlesAnimation = dynamic(
   }
 );
 
+// Pages configuration array - matching exactly with Navbar.tsx
+const pages = [
+
+  {
+    href: "/projects",
+    title: "Projects",
+    desc: "Explore my latest coding projects, applications, and development work.",
+    icon: "bi bi-code-square",
+  },
+  {
+    href: "/skills",
+    title: "Skills",
+    desc: "My technical expertise across programming languages, frameworks and tools.",
+    icon: "bi bi-tools",
+  },
+  {
+    href: "/journey",
+    title: "Journey",
+    desc: "Follow my path through technology, education, and professional growth.",
+    icon: "bi bi-clock-history",
+  },
+  {
+    href: "/blog",
+    title: "Blog",
+    desc: "Thoughts, tutorials and insights on programming, tech trends and innovations.",
+    icon: "bi bi-journal-text",
+  },
+  {
+    href: "/certifications",
+    title: "Certifications",
+    desc: "Professional qualifications and achievements in various tech domains.",
+    icon: "bi bi-award",
+  },
+  {
+    href: "/contact",
+    title: "Contact",
+    desc: "Get in touch for collaborations, questions, or just to say hello!",
+    icon: "bi bi-envelope",
+  }
+];
+
 // Memoize calculation function
 const calculateAge = (birthdate: Date): number => {
   const today = new Date();
@@ -49,27 +90,6 @@ export default function Home() {
 
   const age = useMemo(() => calculateAge(birthdate), [birthdate]);
 
-  const links = useMemo<LinkItem[]>(() => [
-    {
-      href: '/',
-      title: 'Coding',
-      desc: 'Exploring the art of programming and software development, creating',
-      icon: 'bi-code-square',
-    },
-    {
-      href: '/',
-      title: 'Technology',
-      desc: 'Learning about Apple, Microsoft, and others. Exploring hardware and software technology.',
-      icon: 'bi-apple',
-    },
-    {
-      href: '/',
-      title: 'Networking',
-      desc: 'Understanding computer networks, protocols, infrastructure design and more',
-      icon: 'bi-router',
-    },
-  ], []);
-
   return (
     <div className="min-h-screen pt-32 px-4 max-w-6xl mx-auto relative overflow-hidden">
       {/* Replace BackgroundIcons with TechParticlesAnimation */}
@@ -88,7 +108,7 @@ export default function Home() {
               Hello! I'm Adon Omeri
             </h1>
             <p className="text-xl md:text-2xl text-gray-400 min-h-[3rem]">
-              A {age} year old full-stack developer and tech lover passionate about creating elegant solutions and meaningful digital experiences.
+              A {age} year old full-stack developer and tech lover exploring different parts of the technology field.
             </p>
           </div>
 
@@ -96,14 +116,18 @@ export default function Home() {
           <div className="">
             <ThreeDModel/>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8  px-4 ">
-            {links.map((link, index) => (
-              <Link href={link.href} key={index} className="card-hover">
-                <i className={`${link.icon} text-blue-400 text-3xl mb-6 block`}></i>
-                <h2 className={`text-2xl font-bold text-blue-400 mb-4 ${montserrat.className}`}>
-                  {link.title}
-                </h2>
-                <p className="text-gray-300 text-2xl">{link.desc}</p>
+          
+          {/* Updated grid for 7 pages with improved card styling */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 pb-8">
+            {pages.map((page, index) => (
+              <Link href={page.href} key={index} className="card-hover r-blue-900/30 backdrop-blur-sm">
+                <div className="flex items-center mb-4">
+                  <i className={`${page.icon} text-blue-400 text-2xl mr-3`}></i>
+                  <h2 className={`text-xl font-bold text-blue-400 ${montserrat.className}`}>
+                    {page.title}
+                  </h2>
+                </div>
+                <p className="text-gray-300 text-sm">{page.desc}</p>
               </Link>
             ))}
           </div>

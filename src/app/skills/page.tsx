@@ -162,7 +162,7 @@ export default function Skills() {
           {/* Other Programming Languages Section */}
           <div className="mb-24 p-6 rounded-3xl card">
             <h2 className="text-4xl font-bold mb-12 text-center gradient-text font-montserrat">
-              Other Programming Languages
+              Additional Skills
             </h2>
             
             {additionalSkills.otherLanguages && (
@@ -173,7 +173,7 @@ export default function Skills() {
           {/* Additional Skills Section */}
           <div className="mb-24 p-6 rounded-3xl card">
             <h2 className="text-4xl font-bold mb-12 text-center gradient-text font-montserrat">
-              {sectionTitles.additional}
+              Other
             </h2>
             
             <div className="grid gap-16">

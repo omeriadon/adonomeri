@@ -14,7 +14,7 @@ const projectsData = [
   {
     title: "Portfolio Website",
     description: "This website is a portfolio of my projects and skills.",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     link: "/"
   },
   {
@@ -40,6 +40,12 @@ const projectsData = [
     description: "A simple lightweight text snippet manager",
     technologies: ["React", "Next.js", "Image and JSON fetching"],
     link: "https://element-catalogue.vercel.app/"
+  },
+  {
+    title: "Lunar Rover",
+    description: "Small robot using servos, DC motors, and Raspberry Pi with a crane and claw.",
+    technologies: ["Python", "Raspberry Pi", "PrusaSlicer", "Fusion 360"],
+    link: ""
   },
 ];
 

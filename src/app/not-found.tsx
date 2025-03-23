@@ -12,7 +12,7 @@ export default function NotFound() {
       <h1 className="text-5xl font-bold">404</h1>
       <h2 className="text-2xl mt-4">Page Not Found</h2>
       <p className="mt-6 text-gray-400">The page you are looking for doesn't exist or has been moved.</p>
-      <Link href="/" className="card-hover">
+      <Link href="/" className="card-hover mt-8">
         Return Home
       </Link>
     </div>

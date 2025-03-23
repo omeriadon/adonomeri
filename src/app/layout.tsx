@@ -38,7 +38,7 @@ export default function RootLayout({
         <Navbar />
         <PageTransition>
           <div className="w-screen max-w-none py-8 px-0 box-border relative" style={{ width: "100vw" }}>
-            <div className="w-full scale-100">
+            <div className="w-full scale-100 pb-32 mb-8">
               {children}
             </div>
           </div>

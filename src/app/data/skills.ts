@@ -25,7 +25,7 @@ export const skillsData = {
         name: "Python",
         proficiency: "Intermediate",
         experience: "Data analysis and automation scripts, interactive mathematical programs",
-        projects: ["Data Processing Tools", "Maths Programs"]
+        projects: ["Data Processing Tools", "Maths Programs", "Raspberry Pi Projects"]
       },
       {
         name: "Zsh / Bash",
@@ -53,7 +53,7 @@ export const skillsData = {
     development: [
       {
         name: "Git & GitHub",
-        proficiency: "Advanced",
+        proficiency: "Sufficient",
         experience: "Version control and collaboration",
         projects: ["All Development Work"]
       },
@@ -68,6 +68,32 @@ export const skillsData = {
         proficiency: "Advanced",
         experience: "iOS development environment",
         projects: ["All iOS Apps"]
+      },
+    ],
+    Engineering: [
+      {
+        name: "PrusaSlicer",
+        proficiency: "Sufficient",
+        experience: "3D printing slicing software",
+        projects: ["Lunar Rover parts, more"]
+      },
+      {
+        name: "Fusion 360",
+        proficiency: "Proficient",
+        experience: "Advanced 3D modeling and design",
+        projects: ["Lunar Rover, more"]
+      },
+      {
+        name: "AutoCAD",
+        proficiency: "Expert",
+        experience: "2D drafting and design",
+        projects: ["House blueprints, more"]
+      },
+      {
+        name: "Blender",
+        proficiency: "Basic",
+        experience: "3D modeling and animation",
+        projects: ["Chess board, more"]
       },
     ]
   }

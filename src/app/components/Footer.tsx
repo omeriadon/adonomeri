@@ -13,14 +13,19 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="relative z-10 border-t border-gray-800/40">
+    <footer className="relative z-10 mx-8 mb-8 rounded-xl 
+                       border border-blue-500/30 
+                       bg-gray-900/80 backdrop-blur-sm
+                       shadow-[0_0_15px_rgba(59,130,246,0.3)] 
+                       hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]
+                       transition-all duration-300">
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Bio Section */}
           <div className="card-hover">
             <h3 className="text-xl font-bold bg-gradient-to-r from-blue-300 to-blue-900 bg-clip-text text-transparent mb-4">About Me</h3>
             <p className="text-gray-400">
-              Passionate developer crafting digital experiences. Always learning, always building.
+              I'm a full-stack developer and tech enthusiast focused about creating elegant solutions and meaningful digital experiences to random things.
             </p>
           </div>
 
