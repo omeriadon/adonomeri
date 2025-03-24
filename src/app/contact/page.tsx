@@ -24,12 +24,12 @@ const contactMethods = [
     link: "https://github.com/omeriadon",
     icon: "bi-github"
   },
-  // {
-  //   title: "X",
-  //   description: "Follow me for tech insights and development updates.",
-  //   link: "https://x.com/AdonOmeri",
-  //   icon: "bi-twitter-x"
-  // },
+  {
+    title: "X",
+    description: "Follow me for tech insights and development updates.",
+    link: "https://x.com/AdonOmeri",
+    icon: "bi-twitter-x"
+  },
 ];
 
 
