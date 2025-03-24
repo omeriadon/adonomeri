@@ -3,7 +3,7 @@ export const skillsData = {
     frontend: [
       {
         name: "React, TypeScript, Next.js, & Tailwind CSS",
-        proficiency: " Infrequently",
+        proficiency: "Frequently",
         experience: "Built this website and experimented with some other projects",
         projects: ["Portfolio Site"]
       },
