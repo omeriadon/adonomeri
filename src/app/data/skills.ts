@@ -95,6 +95,32 @@ export const skillsData = {
         experience: "3D modeling and animation",
         projects: ["Chess board, more"]
       },
+    ],
+    Creative: [
+      {
+        name: "CapCut",
+        proficiency: "Learning",
+        experience: "Video editing and effects",
+        projects: ["Social media channels"]
+      },
+      {
+        name: "Davinci Resolve",
+        proficiency: "Learning",
+        experience: "Video editing and effects",
+        projects: ["Social media channels"]
+      },
+      {
+        name: "Photoshop",
+        proficiency: "Basic",
+        experience: "Photo editing and design",
+        projects: ["School projects"]
+      },
+      {
+        name: "Illustrator",
+        proficiency: "Basic",
+        experience: "Vector graphics and design",
+        projects: ["School projects"]
+      },
     ]
   }
 };
