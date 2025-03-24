@@ -15,21 +15,21 @@ const contactMethods = [
   {
     title: "Email",
     description: "Drop me a message anytime. I typically respond within 24 hours.",
-    link: "mailto:adon.omeri@gmail.com",
+    link: "mailto:omeriadon@outlook.com",
     icon: "bi-envelope-fill"
   },
   {
     title: "GitHub",
     description: "Check out my code repositories and contributions.",
-    link: "https://github.com/adonomeri",
+    link: "https://github.com/omeriadon",
     icon: "bi-github"
   },
-  {
-    title: "X",
-    description: "Follow me for tech insights and development updates.",
-    link: "https://x.com/AdonOmeri",
-    icon: "bi-twitter-x"
-  },
+  // {
+  //   title: "X",
+  //   description: "Follow me for tech insights and development updates.",
+  //   link: "https://x.com/AdonOmeri",
+  //   icon: "bi-twitter-x"
+  // },
 ];
 
 
