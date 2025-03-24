@@ -1,6 +1,6 @@
 ---
 title: MultiClip Swift app
-date: '2024-03-14'
+date: '2025-03-14'
 tags: ['SwiftUI', 'Swift', 'SwiftData', 'AppKit', 'macOS']
 ---
 
