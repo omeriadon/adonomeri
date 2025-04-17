@@ -75,5 +75,12 @@ export const certifications: Certification[] = [
   image: '/images/certifications/Packet-Tracer-Intro.png',
   link: 'https://www.credly.com/badges/5afc9f09-d59d-43cc-b195-585b6da5cd72/public_url'
 },
-  // Add more certifications here
+{
+  id: 'foundational-c-sharp-with-microsoft',
+  name: 'Foundational C# with Microsoft',
+  provider: 'freeCodeCamp',
+  date: '2024-04-17',
+  image: '/images/certifications/freeCodeCamp-Logo.png',
+  link: 'https://freecodecamp.org/certification/omeriadon/foundational-c-sharp-with-microsoft'
+},
 ]; 

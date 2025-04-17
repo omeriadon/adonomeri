@@ -13,6 +13,12 @@ export const skillsData = {
         experience: "Built some basic sites long ago, before upgrading to better website frameworks",
         projects: ["Mini games", "Personal Blog"]
       },
+      {
+        name: "C# + Windows Presentation Foundation",
+        proficiency: "Learning",
+        experience: "Learning",
+        projects: []
+      },
     ],
     backend: [
       {
@@ -33,14 +39,20 @@ export const skillsData = {
         experience: "General terminal use",
         projects: ["Data Processing Tools", "Maths Programs"]
       },
-    ],
-    mobile: [
       {
         name: "Swift",
         proficiency: "Advanced",
         experience: "Native iOS application development",
         projects: ["Finance App", "Social Media Client"]
       },
+      {
+        name: "C#",
+        proficiency: "Learning",
+        experience: "Windows Presentation Foundation backend",
+        projects: []
+      },
+    ],
+    mobile: [
       {
         name: "SwiftUI",
         proficiency: "Intermediate",
@@ -53,20 +65,20 @@ export const skillsData = {
     development: [
       {
         name: "Git & GitHub",
-        proficiency: "Sufficient",
+        proficiency: "Advanced",
         experience: "Version control and collaboration",
         projects: ["All Development Work"]
       },
       {
         name: "VS Code",
         proficiency: "Advanced",
-        experience: "Primary IDE for web development",
+        experience: "Primary IDE for web/app development",
         projects: ["Web Projects"]
       },
       {
         name: "Xcode",
         proficiency: "Advanced",
-        experience: "iOS development environment",
+        experience: "Apple environment development environment",
         projects: ["All iOS Apps"]
       },
     ],
