@@ -2,6 +2,12 @@ export const skillsData = {
   development: {
     frontend: [
       {
+        name: "SwiftUI",
+        proficiency: "Advanced",
+        experience: "Learning",
+        projects: ["SwiftUIVault", "Element Catalogue", "MultiClip"]
+      },
+      {
         name: "React, TypeScript, Next.js, & Tailwind CSS",
         proficiency: "Frequently",
         experience: "Built this website and experimented with some other projects",
@@ -14,7 +20,13 @@ export const skillsData = {
         projects: ["Mini games", "Personal Blog"]
       },
       {
-        name: "C# + Windows Presentation Foundation",
+        name: "C# + Windows Presentation Foundation / WinUI3",
+        proficiency: "Learning",
+        experience: "Learning",
+        projects: []
+      },
+      {
+        name: "Kotlin + Jetpack Compose for Android",
         proficiency: "Learning",
         experience: "Learning",
         projects: []
@@ -25,7 +37,7 @@ export const skillsData = {
         name: "Node.js",
         proficiency: "Familiar",
         experience: "API development and server-side logic",
-        projects: ["Personal Blog", "Authentication Systems"]
+        projects: ["Personal Blog"]
       },
       {
         name: "Python",
@@ -43,7 +55,7 @@ export const skillsData = {
         name: "Swift",
         proficiency: "Advanced",
         experience: "Native iOS application development",
-        projects: ["Finance App", "Social Media Client"]
+        projects: ["SwiftUIVault", "Element Catalogue", "MultiClip"]
       },
       {
         name: "C#",
@@ -51,14 +63,12 @@ export const skillsData = {
         experience: "Windows Presentation Foundation backend",
         projects: []
       },
-    ],
-    mobile: [
       {
-        name: "SwiftUI",
-        proficiency: "Intermediate",
-        experience: "Modern declarative UI for Apple platforms",
-        projects: ["Health Tracker", "News Reader App"]
-      }
+        name: "Kotlin",
+        proficiency: "Learning",
+        experience: "Android backend",
+        projects: []
+      },
     ]
   },
   tools: {
@@ -72,38 +82,44 @@ export const skillsData = {
       {
         name: "VS Code",
         proficiency: "Advanced",
-        experience: "Primary IDE for web/app development",
+        experience: "Primary IDE for web development",
         projects: ["Web Projects"]
+      },
+      {
+        name: "Visual Code Studio",
+        proficiency: "Advanced",
+        experience: "For C# and XAML development",
+        projects: ["WPF / WinUI3 Projects"]
       },
       {
         name: "Xcode",
         proficiency: "Advanced",
         experience: "Apple environment development environment",
-        projects: ["All iOS Apps"]
+        projects: ["All Swift Apps"]
       },
     ],
     Engineering: [
       {
         name: "PrusaSlicer",
-        proficiency: "Sufficient",
+        proficiency: "Intermediate",
         experience: "3D printing slicing software",
         projects: ["Lunar Rover parts, more"]
       },
       {
         name: "Fusion 360",
-        proficiency: "Proficient",
+        proficiency: "Intermediate",
         experience: "Advanced 3D modeling and design",
         projects: ["Lunar Rover, more"]
       },
       {
         name: "AutoCAD",
-        proficiency: "Expert",
+        proficiency: "Intermediate",
         experience: "2D drafting and design",
         projects: ["House blueprints, more"]
       },
       {
         name: "Blender",
-        proficiency: "Basic",
+        proficiency: "Past",
         experience: "3D modeling and animation",
         projects: ["Chess board, more"]
       },
@@ -153,7 +169,7 @@ export const additionalSkills = {
     }
   ],
   otherLanguages: [
-    "Lua",
+    "Lua"
 
   ]
 };
